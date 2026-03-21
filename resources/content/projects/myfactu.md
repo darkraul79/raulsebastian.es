@@ -1,6 +1,7 @@
 ---
 title: MyFactu
 description: Aplicación de facturación para autónomos con integración Verifactu (AEAT), gestión de gastos, declaraciones trimestrales 303/390 y Renta.
+description_en: Invoicing app for freelancers with Verifactu (AEAT) integration, expense tracking, quarterly tax filings 303/390 and Excel export for income tax.
 tags:
   - Laravel
   - Filament

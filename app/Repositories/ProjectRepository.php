@@ -54,6 +54,7 @@ class ProjectRepository
             'slug' => basename($file, '.md'),
             'title' => $matter['title'],
             'description' => $matter['description'] ?? '',
+            'description_en' => $matter['description_en'] ?? $matter['description'] ?? '',
             'tags' => $matter['tags'] ?? [],
             'url' => $matter['url'] ?? null,
             'github' => $matter['github'] ?? null,

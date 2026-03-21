@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ProjectRepository;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Response;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 use Spatie\LaravelPdf\Facades\Pdf;
@@ -22,6 +23,13 @@ class PortfolioController extends Controller
     public function cv(): InertiaResponse
     {
         return Inertia::render('Cv');
+    }
+
+    public function previewCv(): Response
+    {
+        $lang = in_array(request('lang'), ['es', 'en']) ? request('lang') : 'es';
+
+        return response()->view('pdf.cv', ['lang' => $lang]);
     }
 
     public function downloadCv(): Responsable

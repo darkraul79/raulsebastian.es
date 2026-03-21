@@ -9,10 +9,23 @@
           <div class="hero-cta">
             <a href="#projects" class="btn-primary">{{ t('hero.cta_projects') }}</a>
             <a href="#contact" class="btn-ghost">{{ t('hero.cta_talk') }}</a>
-            <a :href="`/cv/download?lang=${locale}`" class="btn-ghost" download>
-              <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              {{ t('hero.cta_cv') }}
-            </a>
+            <div class="cv-split">
+              <button class="btn-ghost cv-split-trigger">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                {{ t('hero.cta_cv') }}
+                <svg class="cv-split-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="cv-split-dropdown">
+                <a :href="`/cv/preview?lang=${locale}`" class="cv-split-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  {{ t('hero.cta_cv_view') }}
+                </a>
+                <a :href="`/cv/download?lang=${locale}`" class="cv-split-item" download>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  {{ t('hero.cta_cv_download') }}
+                </a>
+              </div>
+            </div>
           </div>
           <div class="hero-badges">
             <span v-for="badge in badges" :key="badge" class="badge">{{ badge }}</span>

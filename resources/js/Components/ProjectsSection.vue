@@ -62,7 +62,7 @@
           <!-- Card body -->
           <div class="p-5 pt-5 flex-1 flex flex-col">
             <div class="proj-title">{{ project.title }}</div>
-            <p class="proj-desc flex-1">{{ project.description }}</p>
+            <p class="proj-desc flex-1">{{ locale === 'en' && project.description_en ? project.description_en : project.description }}</p>
             <div class="flex flex-wrap gap-1.5 mt-4">
               <span v-for="tag in project.tags" :key="tag" class="proj-tag">{{ tag }}</span>
             </div>
@@ -129,7 +129,7 @@
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const props = defineProps({
   projects: { type: Array, default: () => [] },

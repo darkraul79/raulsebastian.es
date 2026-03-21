@@ -11,7 +11,9 @@
     "description": "Más de 25 años construyendo aplicaciones web complejas y escalables en agencias de publicidad y marketing.",
     "cta_projects": "Ver Proyectos",
     "cta_talk": "Hablemos",
-    "cta_cv": "CV PDF"
+    "cta_cv": "CV PDF",
+    "cta_cv_view": "Ver",
+    "cta_cv_download": "Descargar"
   },
   "about": {
     "label": "01 — Sobre mí",

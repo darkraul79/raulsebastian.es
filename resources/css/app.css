@@ -324,6 +324,57 @@ section {
     @apply flex flex-wrap gap-1.75;
 }
 
+/* ── CV split button ── */
+.cv-split {
+    @apply relative;
+}
+
+.cv-split-trigger {
+    @apply flex items-center gap-2;
+}
+
+.cv-split-chevron {
+    @apply w-3.5 h-3.5 transition-transform duration-200;
+}
+
+.cv-split:hover .cv-split-chevron,
+.cv-split:focus-within .cv-split-chevron {
+    transform: rotate(180deg);
+}
+
+.cv-split-dropdown {
+    @apply absolute top-full left-1/2 z-50 flex flex-col overflow-hidden opacity-0 pointer-events-none;
+    transform: translateX(-50%) translateY(6px);
+    min-width: 148px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    background: rgba(10, 10, 24, .92);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .45);
+    transition: opacity .2s, transform .2s;
+    margin-top: 6px;
+}
+
+.cv-split:hover .cv-split-dropdown,
+.cv-split:focus-within .cv-split-dropdown {
+    @apply opacity-100 pointer-events-auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.cv-split-item {
+    @apply flex items-center gap-2.5 no-underline px-4 py-2.75 text-sm font-medium transition-all duration-150;
+    color: rgba(255, 255, 255, .7);
+
+    svg { @apply w-3.5 h-3.5 shrink-0; }
+
+    &:first-child { border-bottom: 1px solid rgba(255, 255, 255, .07); }
+
+    &:hover {
+        color: #fff;
+        background: rgba(225, 29, 72, .12);
+    }
+}
+
 .hero-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;

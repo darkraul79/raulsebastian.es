@@ -11,7 +11,9 @@
     "description": "25+ years building complex, scalable web applications for advertising and marketing agencies.",
     "cta_projects": "View Projects",
     "cta_talk": "Let's Talk",
-    "cta_cv": "CV PDF"
+    "cta_cv": "CV PDF",
+    "cta_cv_view": "View",
+    "cta_cv_download": "Download"
   },
   "about": {
     "label": "01 — About",

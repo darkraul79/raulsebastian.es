@@ -11,7 +11,6 @@
         :root {
             --rose:    #e11d48;
             --purple:  #9333ea;
-            --rose-lt: #fb7185;
             --ink:     #0f0f23;
             --ink-2:   #1e1e38;
             --muted:   #4a4a6e;
@@ -20,22 +19,158 @@
             --bg-side: #f6f6fb;
         }
 
-        @page { margin: 0; size: A4; }
+        @page { size: A4; margin: 0; }
 
-        body {
+        html, body {
             font-family: 'Inter', system-ui, sans-serif;
             font-size: 10px;
             line-height: 1.55;
             color: var(--ink);
             background: #fff;
             width: 210mm;
-            min-height: 297mm;
         }
+
+        /* ═══ SCREEN-ONLY VIEWER ═══ */
+        @media screen {
+            html {
+                background: #1a1a2e;
+                min-height: 100vh;
+                width: 100%;
+            }
+
+            body {
+                margin: 0 auto;
+                box-shadow: 0 8px 48px rgba(0,0,0,.5);
+                margin-top: 72px;
+                margin-bottom: 48px;
+            }
+
+            .cv-bar {
+                display: flex !important;
+            }
+        }
+
+        @media print {
+            .cv-bar { display: none !important; }
+        }
+
+        .cv-bar {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 52px;
+            background: rgba(7, 7, 18, .95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 999;
+            gap: 16px;
+        }
+
+        .cv-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cv-bar-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,.55);
+            text-decoration: none;
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: color .2s;
+        }
+
+        .cv-bar-back:hover { color: rgba(255,255,255,.9); }
+
+        .cv-bar-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255,255,255,.85);
+            letter-spacing: -.01em;
+        }
+
+        .cv-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cv-bar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all .2s;
+        }
+
+        .cv-bar-btn-ghost {
+            color: rgba(255,255,255,.6);
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .cv-bar-btn-ghost:hover {
+            color: #fff;
+            background: rgba(255,255,255,.1);
+        }
+
+        .cv-bar-btn-primary {
+            color: #fff;
+            background: linear-gradient(135deg, #be123c, #7e22ce);
+        }
+
+        .cv-bar-btn-primary:hover {
+            opacity: .88;
+        }
+
+        .cv-bar-lang {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: rgba(255,255,255,.45);
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all .2s;
+        }
+
+        .cv-bar-lang:hover {
+            color: rgba(255,255,255,.85);
+            border-color: rgba(255,255,255,.25);
+        }
+
+        /* ═══ LINKS ═══ */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a[href^="http"], a[href^="https"] { color: var(--purple); }
+        a[href^="mailto"]                 { color: var(--rose);   }
+        a[href^="tel"]                    { color: var(--ink-2);  }
 
         /* ═══ HEADER ═══ */
         .header {
             background: linear-gradient(135deg, #be123c 0%, #7e22ce 100%);
-            padding: 32px 40px 28px;
+            padding: 26px 36px 22px;
             position: relative;
             overflow: hidden;
         }
@@ -44,55 +179,49 @@
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,.07) 0%, transparent 70%),
-                radial-gradient(ellipse 30% 60% at 10% -10%, rgba(255,255,255,.1) 0%, transparent 60%);
+            background: radial-gradient(ellipse 60% 100% at 85% 50%, rgba(255,255,255,.07) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .header-inner {
             position: relative;
             z-index: 1;
+        }
+
+        .header-top {
             display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 24px;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 10px;
         }
 
         .header-name {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 800;
             letter-spacing: -0.04em;
             color: #fff;
             line-height: 1;
-            margin-bottom: 6px;
         }
 
         .header-role {
-            font-size: 11px;
-            color: rgba(255,255,255,.75);
+            font-size: 10.5px;
+            color: rgba(255,255,255,.72);
             font-weight: 400;
-            letter-spacing: .08em;
+            letter-spacing: .07em;
             text-transform: uppercase;
+            padding-bottom: 2px;
         }
 
         .header-meta {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 5px;
-        }
-
-        .header-meta-row {
-            display: flex;
-            gap: 16px;
-            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 4px 20px;
+            align-items: center;
         }
 
         .header-meta-item {
             font-size: 9px;
-            color: rgba(255,255,255,.78);
             font-family: 'JetBrains Mono', monospace;
             display: flex;
             align-items: center;
@@ -101,38 +230,45 @@
 
         .header-meta-item::before {
             content: '›';
-            color: rgba(255,255,255,.4);
+            color: rgba(255,255,255,.38);
+            font-size: 11px;
         }
 
-        /* ═══ BODY ═══ */
+        .header-meta-item a {
+            color: rgba(255,255,255,.8);
+        }
+
+        .header-meta-item a:hover {
+            color: #fff;
+        }
+
+        /* ═══ BODY LAYOUT ═══ */
         .body {
             display: flex;
-            min-height: calc(297mm - 120px);
         }
 
-        /* ═══ SIDEBAR ═══ */
         .sidebar {
-            width: 200px;
+            width: 196px;
             flex-shrink: 0;
             background: var(--bg-side);
-            padding: 26px 20px;
+            padding: 20px 16px;
             border-right: 1px solid var(--border);
         }
 
         .main {
             flex: 1;
-            padding: 26px 32px;
+            padding: 20px 28px;
         }
 
         /* ═══ SECTION TITLES ═══ */
         .sec-title {
-            font-size: 8px;
+            font-size: 7.5px;
             font-weight: 700;
             letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--rose);
-            margin-bottom: 12px;
-            padding-bottom: 5px;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
             border-bottom: 1px solid #fccdd7;
             display: flex;
             align-items: center;
@@ -141,43 +277,35 @@
 
         .sec-title::before {
             content: '';
-            width: 2.5px;
-            height: 10px;
+            width: 2px;
+            height: 9px;
             border-radius: 2px;
             background: linear-gradient(var(--rose), var(--purple));
             flex-shrink: 0;
         }
 
-        .sec-block {
-            margin-bottom: 22px;
-        }
+        .sec-block { margin-bottom: 18px; }
 
         /* ═══ SKILLS ═══ */
-        .skill-group {
-            margin-bottom: 11px;
-        }
+        .skill-group { margin-bottom: 9px; }
 
         .skill-group-label {
-            font-size: 7.5px;
+            font-size: 7px;
             font-weight: 600;
             letter-spacing: .1em;
             text-transform: uppercase;
             color: var(--dim);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3px;
-        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
 
         .tag {
             display: inline-flex;
             align-items: center;
-            padding: 2px 7px;
-            border-radius: 4px;
-            font-size: 8.5px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 8px;
             font-weight: 500;
         }
 
@@ -185,13 +313,11 @@
         .tag-purple { background: #f3e8ff; color: #7c3aed; }
         .tag-gray   { background: #f0f0f8; color: #4a4a72; }
 
-        /* ═══ CONTACT ═══ */
-        .contact-row {
-            margin-bottom: 8px;
-        }
+        /* ═══ SIDEBAR CONTACT ═══ */
+        .contact-row { margin-bottom: 7px; }
 
         .contact-lbl {
-            font-size: 7.5px;
+            font-size: 7px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .08em;
@@ -200,7 +326,7 @@
         }
 
         .contact-val {
-            font-size: 9px;
+            font-size: 8.5px;
             color: var(--ink-2);
             font-family: 'JetBrains Mono', monospace;
         }
@@ -210,50 +336,40 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-size: 9px;
         }
 
-        .lang-level {
-            font-size: 8px;
-            color: var(--dim);
-        }
+        .lang-level { font-size: 7.5px; color: var(--dim); }
 
         /* ═══ EDUCATION ═══ */
-        .edu-item {
-            margin-bottom: 10px;
-        }
+        .edu-item { margin-bottom: 8px; }
 
         .edu-degree {
-            font-size: 9.5px;
+            font-size: 8.5px;
             font-weight: 700;
             color: var(--ink);
             line-height: 1.3;
         }
 
-        .edu-info {
-            font-size: 8.5px;
-            color: var(--dim);
-        }
+        .edu-info { font-size: 7.5px; color: var(--dim); }
 
         /* ═══ SUMMARY ═══ */
         .summary-text {
-            font-size: 10px;
+            font-size: 9.5px;
             color: var(--muted);
             line-height: 1.75;
         }
 
         /* ═══ EXPERIENCE ═══ */
         .job {
-            margin-bottom: 18px;
-            padding-bottom: 16px;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
             border-bottom: 1px solid var(--border);
+            page-break-inside: avoid;
         }
 
-        .job:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
+        .job:last-child { border-bottom: none; padding-bottom: 0; }
 
         .job-header {
             display: flex;
@@ -264,67 +380,63 @@
         }
 
         .job-title {
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--ink);
             line-height: 1.25;
         }
 
         .job-period {
-            font-size: 8.5px;
+            font-size: 8px;
             color: var(--dim);
             white-space: nowrap;
             font-family: 'JetBrains Mono', monospace;
-            padding-top: 1px;
+            padding-top: 2px;
         }
 
         .job-company {
-            font-size: 9.5px;
+            font-size: 9px;
             font-weight: 600;
             color: var(--rose);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .job-desc {
-            font-size: 9.5px;
+            font-size: 9px;
             color: var(--muted);
             line-height: 1.65;
         }
 
-        .job-desc ul {
-            padding-left: 13px;
-        }
-
-        .job-desc li {
-            margin-bottom: 2px;
-        }
+        .job-desc ul { padding-left: 12px; }
+        .job-desc li { margin-bottom: 2px; }
 
         /* ═══ PROJECTS ═══ */
         .project-item {
-            margin-bottom: 12px;
-            padding: 11px 14px;
+            margin-bottom: 10px;
+            padding: 9px 12px;
             background: #f9f9fd;
-            border-radius: 6px;
-            border-left: 3px solid var(--rose);
+            border-radius: 5px;
+            border-left: 2.5px solid var(--rose);
+            page-break-inside: avoid;
         }
 
         .project-title {
-            font-size: 10.5px;
+            font-size: 10px;
             font-weight: 700;
             color: var(--ink);
             margin-bottom: 2px;
         }
 
         .project-tech {
-            font-size: 8.5px;
+            font-size: 8px;
             color: var(--purple);
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-family: 'JetBrains Mono', monospace;
         }
 
         .project-desc {
-            font-size: 9px;
+            font-size: 8.5px;
             color: var(--muted);
             line-height: 1.65;
         }
@@ -332,23 +444,39 @@
 </head>
 <body>
 
+<!-- VIEWER BAR (screen only) -->
+<div class="cv-bar">
+    <div class="cv-bar-left">
+        <a href="/" class="cv-bar-back">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg>
+            {{ $lang === 'en' ? 'Back' : 'Volver' }}
+        </a>
+        <span class="cv-bar-title">CV — Raúl Sebastián</span>
+    </div>
+    <div class="cv-bar-actions">
+        <a href="/cv/preview?lang={{ $lang === 'es' ? 'en' : 'es' }}" class="cv-bar-lang">
+            {{ $lang === 'es' ? '🇬🇧 EN' : '🇪🇸 ES' }}
+        </a>
+        <a href="/cv/download?lang={{ $lang }}" class="cv-bar-btn cv-bar-btn-ghost" download>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            {{ $lang === 'en' ? 'Download PDF' : 'Descargar PDF' }}
+        </a>
+    </div>
+</div>
+
 <!-- HEADER -->
 <div class="header">
     <div class="header-inner">
-        <div>
+        <div class="header-top">
             <div class="header-name">Raúl Sebastián</div>
             <div class="header-role">Full-Stack Developer · Laravel · Vue · PHP</div>
         </div>
         <div class="header-meta">
-            <div class="header-meta-row">
-                <span class="header-meta-item">raulsebastian.es</span>
-                <span class="header-meta-item">info@raulsebastian.es</span>
-            </div>
-            <div class="header-meta-row">
-                <span class="header-meta-item">+34 615 48 20 46</span>
-                <span class="header-meta-item">github.com/raulsebastian</span>
-                <span class="header-meta-item">linkedin.com/in/raulsebastian</span>
-            </div>
+            <span class="header-meta-item"><a href="https://raulsebastian.es">raulsebastian.es</a></span>
+            <span class="header-meta-item"><a href="mailto:info@raulsebastian.es">info@raulsebastian.es</a></span>
+            <span class="header-meta-item"><a href="tel:+34615482046">+34 615 48 20 46</a></span>
+            <span class="header-meta-item"><a href="https://github.com/raulsebastian">github.com/raulsebastian</a></span>
+            <span class="header-meta-item"><a href="https://linkedin.com/in/raulsebastian">linkedin.com/in/raulsebastian</a></span>
         </div>
     </div>
 </div>
@@ -415,25 +543,26 @@
 
         <div class="sec-block">
             <div class="sec-title">{{ $lang === 'en' ? 'Contact' : 'Contacto' }}</div>
+
             <div class="contact-row">
                 <div class="contact-lbl">Web</div>
-                <div class="contact-val">raulsebastian.es</div>
+                <div class="contact-val"><a href="https://raulsebastian.es">raulsebastian.es</a></div>
             </div>
             <div class="contact-row">
                 <div class="contact-lbl">Email</div>
-                <div class="contact-val">info@raulsebastian.es</div>
+                <div class="contact-val"><a href="mailto:info@raulsebastian.es">info@raulsebastian.es</a></div>
             </div>
             <div class="contact-row">
                 <div class="contact-lbl">{{ $lang === 'en' ? 'Phone' : 'Teléfono' }}</div>
-                <div class="contact-val">+34 615 48 20 46</div>
+                <div class="contact-val"><a href="tel:+34615482046">+34 615 48 20 46</a></div>
             </div>
             <div class="contact-row">
                 <div class="contact-lbl">GitHub</div>
-                <div class="contact-val">github.com/raulsebastian</div>
+                <div class="contact-val"><a href="https://github.com/raulsebastian">github.com/raulsebastian</a></div>
             </div>
             <div class="contact-row">
                 <div class="contact-lbl">LinkedIn</div>
-                <div class="contact-val">linkedin.com/in/raulsebastian</div>
+                <div class="contact-val"><a href="https://linkedin.com/in/raulsebastian">linkedin.com/in/raulsebastian</a></div>
             </div>
         </div>
 
@@ -456,12 +585,12 @@
                 <div class="edu-info">{{ $lang === 'en' ? 'Specialization' : 'Especialización' }} · 2001–2004</div>
             </div>
             <div class="edu-item">
-                <div class="edu-degree">TIG — {{ $lang === 'en' ? 'IT Management Technician' : 'Técnico en Informática de Gestión' }}</div>
+                <div class="edu-degree">TIG — {{ $lang === 'en' ? 'IT Management Technician' : 'Técnico Informática de Gestión' }}</div>
                 <div class="edu-info">1995–1998</div>
             </div>
             <div class="edu-item">
                 <div class="edu-degree">TS {{ $lang === 'en' ? 'Image & Sound' : 'Imagen y Sonido' }}</div>
-                <div class="edu-info">{{ $lang === 'en' ? 'Photography' : 'Fotografía' }} · 1993–1998</div>
+                <div class="edu-info">{{ $lang === 'en' ? 'Photography spec.' : 'Fotografía' }} · 1993–1998</div>
             </div>
         </div>
 
@@ -476,7 +605,7 @@
                 @if($lang === 'en')
                     Full-stack developer with 25+ years of experience building web products for advertising agencies, digital marketing, and personal projects.
                     Specialized in the <strong>Laravel + Vue</strong> ecosystem, with solid expertise in application architecture, complex API integrations, and Linux server deployment.
-                    I complement my technical skills with 3D, motion graphics and design — enabling a multidisciplinary approach to every project.
+                    I complement my technical background with 3D, motion graphics and design.
                 @else
                     Desarrollador full-stack con más de 25 años de experiencia construyendo productos web para agencias de publicidad, marketing digital y proyectos propios.
                     Especializado en el ecosistema <strong>Laravel + Vue</strong>, con sólida base en arquitectura de aplicaciones, integraciones de APIs complejas y despliegue en entornos Linux.
@@ -498,12 +627,12 @@
                     <ul>
                         @if($lang === 'en')
                             <li>Custom Laravel applications: invoicing, e-commerce, internal management tools.</li>
-                            <li>Admin panels with Filament and Livewire. API integrations: AEAT Verifactu, payment gateways, ERPs.</li>
+                            <li>Admin panels with Filament & Livewire. API integrations: AEAT Verifactu, payment gateways, ERPs.</li>
                             <li>Architecture, deployment and maintenance on Linux VPS with Docker.</li>
-                            <li>Digital campaigns, video production and motion graphics for advertising clients.</li>
+                            <li>Digital campaigns, video and motion graphics for advertising clients.</li>
                         @else
-                            <li>Aplicaciones Laravel a medida: facturación, e-commerce, herramientas de gestión interna.</li>
-                            <li>Paneles de administración con Filament y Livewire. Integraciones con AEAT Verifactu, pasarelas de pago y ERPs.</li>
+                            <li>Aplicaciones Laravel a medida: facturación, e-commerce, gestión interna.</li>
+                            <li>Paneles con Filament & Livewire. Integraciones: AEAT Verifactu, pasarelas de pago, ERPs.</li>
                             <li>Arquitectura, despliegue y mantenimiento en VPS Linux con Docker.</li>
                             <li>Campañas digitales, vídeo y motion graphics para clientes de publicidad.</li>
                         @endif
@@ -519,8 +648,8 @@
                 <div class="job-company">Wunderman (WPP Group)</div>
                 <div class="job-desc">
                     {{ $lang === 'en'
-                        ? 'Built internal management tools, microsites and email marketing campaigns for top-tier clients.'
-                        : 'Desarrollo de herramientas de gestión, microsites y campañas de email marketing para clientes de primer nivel.' }}
+                        ? 'Internal management tools, microsites and email marketing campaigns for top-tier clients.'
+                        : 'Herramientas de gestión, microsites y campañas de email marketing para clientes de primer nivel.' }}
                 </div>
             </div>
 
@@ -545,8 +674,8 @@
                 <div class="job-company">Publicis Groupe / Grupo K</div>
                 <div class="job-desc">
                     {{ $lang === 'en'
-                        ? 'Web design and development for major brands. Interactive DVDs and multimedia assets for international advertising campaigns.'
-                        : 'Diseño y desarrollo web para grandes marcas. DVDs interactivos y materiales multimedia para campañas publicitarias internacionales.' }}
+                        ? 'Web design and development for major brands. Interactive DVDs and multimedia assets for international campaigns.'
+                        : 'Diseño y desarrollo web para grandes marcas. DVDs interactivos y materiales multimedia para campañas internacionales.' }}
                 </div>
             </div>
         </div>
@@ -559,8 +688,8 @@
                 <div class="project-tech">Laravel · Filament · Verifactu AEAT · Vue</div>
                 <div class="project-desc">
                     {{ $lang === 'en'
-                        ? 'SaaS invoicing platform for freelancers with official Verifactu (AEAT) integration, expense tracking, quarterly tax filings (303/390) and Excel export for income tax.'
-                        : 'SaaS de facturación para autónomos con integración oficial Verifactu (AEAT), gestión de gastos, declaraciones 303/390 y exportación Excel para la Renta.' }}
+                        ? 'SaaS invoicing for freelancers: Verifactu (AEAT) integration, expense tracking, quarterly filings 303/390 and Excel export for income tax.'
+                        : 'SaaS de facturación para autónomos: integración Verifactu (AEAT), gestión de gastos, declaraciones 303/390 y exportación Excel para la Renta.' }}
                 </div>
             </div>
 
@@ -569,8 +698,8 @@
                 <div class="project-tech">Laravel 12 · Vue 3 · Inertia · Tailwind v4</div>
                 <div class="project-desc">
                     {{ $lang === 'en'
-                        ? 'SPA with 3D CSS animations, particle canvas and PDF CV generation. No database — content managed via Markdown files.'
-                        : 'SPA con animaciones 3D CSS, canvas de partículas y generación de CV PDF. Sin base de datos — contenido via Markdown.' }}
+                        ? 'SPA with 3D CSS animations, particle canvas and PDF CV generation. Content managed via Markdown files.'
+                        : 'SPA con animaciones 3D CSS, canvas de partículas y generación de CV PDF. Contenido via Markdown.' }}
                 </div>
             </div>
         </div>
