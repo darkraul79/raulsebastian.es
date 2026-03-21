@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Configuración local de herramientas de desarrollo (contienen rutas del sistema)
+.junie/
+.mcp.json
