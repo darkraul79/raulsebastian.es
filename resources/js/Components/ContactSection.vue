@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="contact-section py-[clamp(100px,12vw,160px)] relative">
+  <section id="contact" class="contact-section">
     <div class="container">
       <div class="reveal text-center relative">
         <h2 class="contact-h2">¿<em class="contact-em">Hablamos</em>?</h2>
@@ -23,65 +23,3 @@
     </div>
   </section>
 </template>
-
-<style>
-.contact-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(700px 350px at 50% 0%, rgba(225, 29, 72, .12), transparent 60%),
-    radial-gradient(500px 250px at 50% 100%, rgba(168, 85, 247, .09), transparent 60%);
-}
-
-.contact-h2 {
-  font-family: var(--font-display);
-  font-size: clamp(50px, 8vw, 96px);
-  font-weight: 800;
-  letter-spacing: -.04em;
-  line-height: 1;
-  margin-bottom: 1.5rem;
-}
-
-.contact-em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--color-rose-light), var(--color-purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.contact-email {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: clamp(13px, 1.8vw, 18px);
-  color: rgba(255, 255, 255, .62);
-  text-decoration: none;
-  letter-spacing: .02em;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, .14);
-  padding-bottom: 4px;
-  transition: all .25s;
-}
-
-.contact-email:hover { color: #fff; text-shadow: 0 0 20px rgba(225, 29, 72, .5); border-color: var(--color-rose); }
-
-.soc-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, .10);
-  background: var(--color-glass);
-  color: rgba(255, 255, 255, .60);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all .25s;
-  backdrop-filter: blur(8px);
-}
-
-.soc-btn:hover { color: #fff; border-color: rgba(225, 29, 72, .3); background: rgba(225, 29, 72, .08); box-shadow: 0 8px 24px rgba(225, 29, 72, .14); transform: translateY(-3px); }
-</style>

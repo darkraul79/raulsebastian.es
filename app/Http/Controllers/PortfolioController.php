@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\ProjectRepository;
-use Illuminate\Http\Response;
+use Illuminate\Contracts\Support\Responsable;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 use Spatie\LaravelPdf\Facades\Pdf;
@@ -24,7 +24,7 @@ class PortfolioController extends Controller
         return Inertia::render('Cv');
     }
 
-    public function downloadCv(): Response
+    public function downloadCv(): Responsable
     {
         return Pdf::view('pdf.cv')
             ->format('a4')

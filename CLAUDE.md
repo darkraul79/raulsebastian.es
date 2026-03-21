@@ -70,10 +70,11 @@ Descripción larga en Markdown (no usada actualmente en la UI, pero disponible).
 
 ## CSS
 
-- **Tailwind v4**: NO usar `@apply` con clases personalizadas, solo con utilities de Tailwind.
-- Variables CSS definidas en `@theme {}` en `resources/css/app.css`.
-- Estilos de componentes Vue en `<style>` scoped o global dentro del propio `.vue`.
-- Variables disponibles: `--color-rose`, `--color-rose-light`, `--color-purple`, `--color-purple-light`, `--color-bg`, `--font-display`, `--font-mono`, `--font-sans`.
+- **Todo el CSS vive en `resources/css/app.css`**. NO usar bloques `<style>` en componentes Vue. NO usar `style="..."` inline en templates.
+- **`@apply` para todo lo que Tailwind soporte**: posición, display, flex/grid, overflow, z-index, tamaños, spacing, bordes, tipografía, color, opacidad, cursor, pointer-events, transition, inset, etc. CSS raw solo para: gradientes con rgba, `backdrop-filter`, `animation`/keyframes, `content:`, `cqh/cqw`, `box-shadow` complejo, `perspective`, `transform-style`, `scrollbar-*`, transforms 3D complejos, `clamp()` en padding/gap, `-webkit-background-clip`.
+- **Valores nativos de Tailwind v4**: NO usar `[...]` arbitrarios cuando existe el valor nativo. La escala usa incrementos de 0.25 (4px=1, 6px=1.5, 8px=2, etc.). Ejemplos: `z-[1000]`→`z-1000`, `w-[18px]`→`w-4.5`, `gap-[8px]`→`gap-2`, `flex-shrink-0`→`shrink-0`, `duration-[300ms]`→`duration-300`, `rounded-[4px]`→`rounded-sm`.
+- **CSS nesting**: usar `&:hover`, `&.active`, `&::before`, `&.tl`, etc. dentro de cada clase para agrupar reglas relacionadas.
+- Variables CSS en `@theme {}`: `--color-rose`, `--color-rose-light`, `--color-purple`, `--color-purple-light`, `--color-bg`, `--font-display`, `--font-mono`, `--font-sans`.
 
 ## Convenciones PHP
 
