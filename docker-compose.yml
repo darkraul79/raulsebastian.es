@@ -23,6 +23,13 @@ services:
       TZ: Europe/Madrid
       TRUST_PROXIES: ${TRUST_PROXIES:-*}
     volumes:
+      # Código fuente montado desde el host → permite deploys rápidos sin rebuild
+      - ./app:/var/www/html/app:ro
+      - ./bootstrap/app.php:/var/www/html/bootstrap/app.php:ro
+      - ./bootstrap/providers.php:/var/www/html/bootstrap/providers.php:ro
+      - ./config:/var/www/html/config:ro
+      - ./resources:/var/www/html/resources:ro
+      - ./routes:/var/www/html/routes:ro
       # bootstrap/cache debe ser escribible (config:cache, route:cache, etc.)
       - bootstrap_cache:/var/www/html/bootstrap/cache
       - ./storage/logs:/var/www/html/storage/logs
