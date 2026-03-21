@@ -39,6 +39,7 @@ jobs:
               docker/*|Dockerfile|\
               docker-compose.yml|\
               vite.config.js|\
+              public/images*|public/favicon.ico|\
               resources/css/*|resources/js/*)
                 NEEDS_REBUILD=true
                 echo "  → Rebuild necesario por: $file"
