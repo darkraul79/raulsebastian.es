@@ -84,6 +84,12 @@ Descripción larga en Markdown (no usada actualmente en la UI, pero disponible).
 - Return types explícitos.
 - Pint: `vendor/bin/pint --dirty` antes de finalizar.
 
+## Testing (TDD)
+
+- **Estrategia TDD**: escribir el test primero (que falle), luego implementar hasta que pase, luego refactorizar.
+- Usar **Pest** para todos los tests: `./vendor/bin/pest tests/Feature/NombreTest.php`
+- Driver PDF configurado: `dompdf` (PHP puro, sin binarios externos). Variable `.env`: `LARAVEL_PDF_DRIVER=dompdf`.
+
 ## Git
 
 - **NUNCA hacer commits ni pushes automáticamente.**
