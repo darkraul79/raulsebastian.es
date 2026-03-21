@@ -17,7 +17,9 @@
           <div class="about-paragraphs">
             <p class="about-p">{{ t('about.p1') }}</p>
             <p class="about-p">{{ t('about.p2') }}</p>
-            <p class="about-p" v-html="t('about.p3')"></p>
+            <i18n-t tag="p" keypath="about.p3" class="about-p">
+              <template #brands><strong>Loewe, Osborne &amp; McCann</strong></template>
+            </i18n-t>
           </div>
           <div class="about-stats">
             <div v-for="stat in stats" :key="stat.key" class="stat-card">

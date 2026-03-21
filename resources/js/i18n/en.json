@@ -20,7 +20,7 @@
     "title": "I build things\nfor the web.",
     "p1": "Full-stack developer with 25+ years of experience in advertising and digital marketing agencies. Focused on complex, scalable web applications.",
     "p2": "I combine technical development with 3D, motion graphics and design — allowing me to approach projects from multiple creative and technical angles.",
-    "p3": "I've worked with brands like <strong>Loewe, Osborne and McCann</strong>, delivering solutions that balance performance, design and real-world functionality.",
+    "p3": "I've worked with brands like {brands}, delivering solutions that balance performance, design and real-world functionality.",
     "stat_years": "yrs exp.",
     "stat_projects": "projects",
     "stat_clients": "clients"
