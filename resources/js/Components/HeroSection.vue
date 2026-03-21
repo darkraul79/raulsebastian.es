@@ -3,15 +3,15 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-text">
-          <p class="h-sub">Desarrollador Full-Stack</p>
+          <p class="h-sub">{{ t('hero.subtitle') }}</p>
           <h1 class="hero-h1">Raúl<br><span class="hero-gradient">Sebastián</span></h1>
-          <p class="hero-p">Más de 15 años construyendo aplicaciones web complejas y escalables en agencias de publicidad y marketing.</p>
+          <p class="hero-p">{{ t('hero.description') }}</p>
           <div class="hero-cta">
-            <a href="#projects" class="btn-primary">Ver Proyectos</a>
-            <a href="#contact" class="btn-ghost">Hablemos</a>
+            <a href="#projects" class="btn-primary">{{ t('hero.cta_projects') }}</a>
+            <a href="#contact" class="btn-ghost">{{ t('hero.cta_talk') }}</a>
             <a href="/cv/download" class="btn-ghost" download>
               <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              CV PDF
+              {{ t('hero.cta_cv') }}
             </a>
           </div>
           <div class="hero-badges">
@@ -45,9 +45,11 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const badges = ['Laravel', 'Vue', 'PHP', 'MySQL', 'Blender', 'WordPress'];
-
 const isGlitching = ref(false);
 
 function triggerGlitch() {

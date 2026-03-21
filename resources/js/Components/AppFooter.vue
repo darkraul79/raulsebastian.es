@@ -5,3 +5,6 @@
     </p>
   </footer>
 </template>
+
+<script setup>
+</script>

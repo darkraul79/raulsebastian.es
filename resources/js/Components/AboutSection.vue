@@ -1,7 +1,7 @@
 <template>
   <section id="about" class="about-section">
     <div class="container">
-      <div class="reveal"><span class="sec-label">01 — Sobre mí</span></div>
+      <div class="reveal"><span class="sec-label">{{ t('about.label') }}</span></div>
       <div class="about-grid">
         <div class="reveal">
           <div class="about-photo">
@@ -11,16 +11,18 @@
           </div>
         </div>
         <div class="reveal d1">
-          <h2 class="sec-h2 about-h2">Construyo cosas<br>para la web.</h2>
+          <div class="sec-heading">
+            <h2 class="sec-h2 about-h2 mb-0" v-html="t('about.title').replace('\n', '<br>')"></h2>
+          </div>
           <div class="about-paragraphs">
-            <p class="about-p">Desarrollador full-stack con más de 15 años de experiencia en agencias de publicidad y marketing digital. Especializado en aplicaciones web complejas y escalables.</p>
-            <p class="about-p">Combino el desarrollo técnico con 3D, motion graphics y diseño, lo que me permite abordar proyectos desde múltiples ángulos creativos y técnicos.</p>
-            <p class="about-p">He colaborado con marcas como <strong class="text-white/90">Loewe, Osborne y McCann</strong>, entregando soluciones que combinan rendimiento, diseño y funcionalidad real.</p>
+            <p class="about-p">{{ t('about.p1') }}</p>
+            <p class="about-p">{{ t('about.p2') }}</p>
+            <p class="about-p" v-html="t('about.p3')"></p>
           </div>
           <div class="about-stats">
-            <div v-for="stat in stats" :key="stat.label" class="stat-card">
+            <div v-for="stat in stats" :key="stat.key" class="stat-card">
               <div class="stat-value">{{ stat.value }}</div>
-              <div class="stat-label">{{ stat.label }}</div>
+              <div class="stat-label">{{ t(stat.key) }}</div>
             </div>
           </div>
         </div>
@@ -30,9 +32,13 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 const stats = [
-  { value: '15+', label: 'años exp.' },
-  { value: '50+', label: 'proyectos' },
-  { value: '20+', label: 'clientes' },
+  { value: '25+', key: 'about.stat_years' },
+  { value: '50+', key: 'about.stat_projects' },
+  { value: '20+', key: 'about.stat_clients' },
 ];
 </script>

@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "stack": "Stack",
+    "projects": "Proyectos",
+    "clients": "Clientes",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "subtitle": "Desarrollador Full-Stack",
+    "description": "Más de 25 años construyendo aplicaciones web complejas y escalables en agencias de publicidad y marketing.",
+    "cta_projects": "Ver Proyectos",
+    "cta_talk": "Hablemos",
+    "cta_cv": "CV PDF"
+  },
+  "about": {
+    "label": "01 — Sobre mí",
+    "title": "Construyo cosas\npara la web.",
+    "p1": "Desarrollador full-stack con más de 25 años de experiencia en agencias de publicidad y marketing digital. Especializado en aplicaciones web complejas y escalables.",
+    "p2": "Combino el desarrollo técnico con 3D, motion graphics y diseño, lo que me permite abordar proyectos desde múltiples ángulos creativos y técnicos.",
+    "p3": "He colaborado con marcas como <strong>Loewe, Osborne y McCann</strong>, entregando soluciones que combinan rendimiento, diseño y funcionalidad real.",
+    "stat_years": "años exp.",
+    "stat_projects": "proyectos",
+    "stat_clients": "clientes"
+  },
+  "stack": {
+    "label": "02 — Tecnologías",
+    "heading": "Stack",
+    "tools_title": "Herramientas & 3D"
+  },
+  "projects": {
+    "label": "03 — Proyectos",
+    "title": "Últimos trabajos.",
+    "view": "Ver",
+    "view_project": "Ver proyecto ↗",
+    "github": "GitHub ↗",
+    "image": "Imagen",
+    "no_image": "Sin imagen",
+    "hint": "← → navegar · ESC cerrar",
+    "close": "Cerrar"
+  },
+  "clients": {
+    "trusted": "Han confiado en mí"
+  },
+  "contact": {
+    "label": "Hablamos",
+    "email": "info@raulsebastian.es"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados"
+  }
+}

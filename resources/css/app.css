@@ -35,7 +35,7 @@
     }
 
     body {
-        font-family: var(--font-sans);
+        font-family: var(--font-sans), sans-serif;
         background-color: var(--color-bg);
         background-image:
             radial-gradient(1200px 600px at 20% 10%, rgba(225, 29, 72, .32), transparent 55%),
@@ -46,7 +46,7 @@
         /* CRT scanline overlay */
         &::before {
             content: '';
-            @apply fixed inset-0 pointer-events-none z-[9999];
+            @apply fixed inset-0 pointer-events-none z-9999;
             background: repeating-linear-gradient(
                 0deg,
                 transparent 0%,
@@ -61,7 +61,7 @@
 
 /* ── Layout ── */
 .container {
-    @apply max-w-[1160px] mx-auto;
+    @apply max-w-290 mx-auto;
     padding: 0 clamp(1.5rem, 4vw, 3rem);
 }
 
@@ -72,7 +72,7 @@ section {
 /* ── Shared text ── */
 .sec-label {
     @apply inline-flex items-center gap-2.5 uppercase mb-[1.2rem];
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 11px;
     @apply font-semibold;
     letter-spacing: .12em;
@@ -86,7 +86,7 @@ section {
 }
 
 .sec-h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(30px, 4vw, 50px);
     @apply font-extrabold tracking-[-0.03em] mb-12;
 }
@@ -137,7 +137,7 @@ section {
 /* ── Badges ── */
 .badge {
     @apply cursor-default font-medium text-xs py-1.25 px-3.25 rounded-full;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     border: 1px solid rgba(255, 255, 255, .09);
     background: rgba(255, 255, 255, .04);
     color: rgba(255, 255, 255, .65);
@@ -173,7 +173,7 @@ section {
 }
 
 .stat-value {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(26px, 3.5vw, 38px);
     @apply font-extrabold tracking-[-0.03em] leading-none mb-1;
     background: linear-gradient(135deg, var(--color-rose-light), var(--color-purple));
@@ -184,7 +184,7 @@ section {
 
 .stat-label {
     @apply uppercase;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 10px;
     letter-spacing: .08em;
     color: rgba(255, 255, 255, .38);
@@ -250,7 +250,7 @@ section {
 
 .nav-brand {
     @apply flex items-center gap-2 no-underline shrink-0 font-extrabold text-[21px] tracking-[-0.03em] text-white;
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
 }
 
 .nav-dot {
@@ -281,6 +281,33 @@ section {
     background: rgba(255, 255, 255, .8);
 }
 
+.lang-switcher {
+    @apply flex items-center gap-1.5 bg-transparent border-none cursor-pointer rounded-md py-1 px-2 transition-all duration-200;
+    color: rgba(255, 255, 255, .45);
+
+    &:hover {
+        color: rgba(255, 255, 255, .85);
+        background: rgba(255, 255, 255, .06);
+    }
+}
+
+.lang-flag {
+    @apply text-sm leading-none;
+}
+
+.lang-code {
+    @apply text-xs font-semibold tracking-wider;
+    font-family: var(--font-mono), monospace;
+}
+
+.mobile-lang-btn {
+    @apply bg-transparent border-none cursor-pointer font-medium text-sm py-2 text-left;
+    color: rgba(255, 255, 255, .55);
+    transition: color .2s;
+
+    &:hover { color: rgba(255, 255, 255, .9); }
+}
+
 
 /* ══════════════════════════════════════════
    HERO
@@ -309,7 +336,7 @@ section {
 }
 
 .h-sub {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: clamp(12px, 1.3vw, 15px);
     color: var(--color-rose-light);
     @apply mb-[1.2rem] tracking-[0.08em];
@@ -318,7 +345,7 @@ section {
 }
 
 .hero-h1 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(50px, 7.5vw, 92px);
     @apply font-extrabold leading-none tracking-[-0.04em] mb-[1.2rem];
 }
@@ -430,7 +457,7 @@ section {
     &::after {
         content: '</>';
         @apply absolute flex items-center justify-center pointer-events-none z-2;
-        font-family: var(--font-mono);
+        font-family: var(--font-mono), monospace;
         @apply font-black;
         width: 75cqh; height: 75cqh;
         max-width: 75cqw; max-height: 75cqw;
@@ -548,7 +575,7 @@ section {
 }
 
 .about-initials {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: clamp(22px, 3.5vw, 34px);
     @apply font-bold;
     color: rgba(255, 255, 255, .22);
@@ -575,6 +602,10 @@ section {
     @apply py-[clamp(90px,11vw,140px)];
 }
 
+.sec-heading {
+    @apply flex items-baseline gap-0.5 mb-12;
+}
+
 .stack-heading {
     @apply flex items-baseline gap-0.5 mb-12;
 }
@@ -588,7 +619,7 @@ section {
 }
 
 .stack-title {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     @apply text-[11px] font-semibold uppercase flex items-center mb-5 gap-2 tracking-[0.12em];
     color: var(--color-rose-light);
 
@@ -609,7 +640,7 @@ section {
 }
 
 .blink-cursor {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: clamp(30px, 4vw, 50px);
     color: var(--color-rose);
     animation: blink 1s step-end infinite;
@@ -653,7 +684,7 @@ section {
 }
 
 .proj-img-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 11px;
     @apply font-semibold uppercase;
     letter-spacing: .06em;
@@ -662,7 +693,7 @@ section {
 
 .proj-view-btn {
     @apply ml-auto flex items-center font-semibold gap-1.25 text-[11px];
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     color: var(--color-rose-light);
     letter-spacing: .04em;
 }
@@ -695,7 +726,7 @@ section {
 }
 
 .proj-title {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     @apply text-[17px] font-bold tracking-[-0.02em] mb-[0.45rem];
 }
 
@@ -704,7 +735,7 @@ section {
 /* Project tags */
 .proj-tag {
     @apply uppercase font-semibold text-[10px] py-0.75 px-2.25 rounded-md;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     background: rgba(225, 29, 72, .10);
     border: 1px solid rgba(225, 29, 72, .22);
     color: var(--color-rose-light);
@@ -769,7 +800,7 @@ section {
 }
 
 .lb-no-img-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 13px;
     letter-spacing: .08em;
     color: rgba(255, 255, 255, .6);
@@ -777,13 +808,13 @@ section {
 }
 
 .lb-title {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 17px;
     @apply font-bold;
 }
 
 .lb-subtitle {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 11px;
     color: rgba(255, 255, 255, .45);
     letter-spacing: .06em;
@@ -791,7 +822,7 @@ section {
 }
 
 .lb-counter {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 13px;
     color: rgba(255, 255, 255, .4);
 }
@@ -799,7 +830,7 @@ section {
 .lb-counter-current { color: var(--color-rose-light); }
 
 .lb-hint {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 10px;
     color: rgba(255, 255, 255, .2);
     letter-spacing: .06em;
@@ -817,7 +848,7 @@ section {
 }
 
 .clients-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 11px;
     @apply font-semibold uppercase;
     letter-spacing: .15em;
@@ -830,7 +861,7 @@ section {
 }
 
 .client-name {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(13px, 1.5vw, 17px);
     @apply font-bold uppercase cursor-default;
     letter-spacing: .06em;
@@ -857,7 +888,7 @@ section {
 }
 
 .contact-h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(50px, 8vw, 96px);
     @apply font-extrabold leading-none tracking-[-0.04em] mb-6;
 }
@@ -870,9 +901,14 @@ section {
     background-clip: text;
 }
 
+.contact-punct {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
 .contact-email {
     @apply inline-block no-underline mb-12 pb-1 tracking-[0.02em] transition-all duration-250;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: clamp(13px, 1.8vw, 18px);
     color: rgba(255, 255, 255, .62);
     border-bottom: 1px solid rgba(255, 255, 255, .14);
@@ -902,7 +938,7 @@ section {
 }
 
 .footer-text {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     font-size: 11px;
     color: rgba(255, 255, 255, .2);
     letter-spacing: .05em;

@@ -2,9 +2,9 @@
   <section id="stack" class="stack-section">
     <div class="container">
       <div class="reveal">
-        <span class="sec-label">02 — Tecnologías</span>
+        <span class="sec-label">{{ t('stack.label') }}</span>
         <div class="stack-heading">
-          <h2 class="sec-h2 mb-0">Stack</h2>
+          <h2 class="sec-h2 mb-0">{{ t('stack.heading') }}</h2>
           <span class="blink-cursor">_</span>
         </div>
       </div>
@@ -22,7 +22,12 @@
 </template>
 
 <script setup>
-const stackGroups = [
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
+const stackGroups = computed(() => [
   {
     title: 'Frontend',
     skills: ['HTML5 & CSS3 / SASS', 'JavaScript ES2024', 'Vue 3 / Inertia', 'Tailwind CSS', 'Alpine.js'],
@@ -32,8 +37,8 @@ const stackGroups = [
     skills: ['PHP 8.x', 'Laravel / Livewire', 'Filament', 'MySQL / PostgreSQL', 'REST APIs'],
   },
   {
-    title: 'Herramientas & 3D',
+    title: t('stack.tools_title'),
     skills: ['Blender / Maya / ZBrush', 'After Effects / Premiere', 'Substance Painter', 'WordPress / Prestashop', 'Docker / Linux'],
   },
-];
+]);
 </script>

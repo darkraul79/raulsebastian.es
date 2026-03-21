@@ -2,8 +2,11 @@
   <section id="projects" class="projects-section">
     <div class="container">
       <div class="reveal">
-        <span class="sec-label">03 — Proyectos</span>
-        <h2 class="sec-h2">Últimos trabajos.</h2>
+        <span class="sec-label">{{ t('projects.label') }}</span>
+        <div class="sec-heading">
+          <h2 class="sec-h2 mb-0">{{ t('projects.title') }}</h2>
+          <span class="blink-cursor">_</span>
+        </div>
       </div>
       <div class="projects-grid reveal d1">
         <div
@@ -20,12 +23,12 @@
                 :alt="project.title"
                 class="w-full h-full object-cover"
               />
-              <span v-else class="text-5xl relative z-[2]">🚀</span>
+              <span v-else class="text-5xl relative z-2">🚀</span>
               <div class="proj-img-overlay">
                 <span class="proj-img-label">{{ project.title }}</span>
                 <span class="proj-view-btn">
-                  Ver
-                  <svg class="w-[14px] h-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  {{ t('projects.view') }}
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                 </span>
               </div>
             </div>
@@ -51,7 +54,7 @@
                 @click.stop="setActiveImage(pi, ii)"
               >
                 <img v-if="img" :src="img" :alt="`${project.title} ${ii + 1}`" class="w-full h-full object-cover" />
-                <span v-else class="text-base relative z-[2]">🖼</span>
+                <span v-else class="text-base relative z-2">🖼</span>
               </div>
             </div>
           </div>
@@ -60,12 +63,12 @@
           <div class="p-5 pt-5 flex-1 flex flex-col">
             <div class="proj-title">{{ project.title }}</div>
             <p class="proj-desc flex-1">{{ project.description }}</p>
-            <div class="flex flex-wrap gap-[6px] mt-4">
+            <div class="flex flex-wrap gap-1.5 mt-4">
               <span v-for="tag in project.tags" :key="tag" class="proj-tag">{{ tag }}</span>
             </div>
             <div class="flex gap-3 mt-4">
-              <a v-if="project.url" :href="project.url" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">Ver proyecto ↗</a>
-              <a v-if="project.github" :href="project.github" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">GitHub ↗</a>
+              <a v-if="project.url" :href="project.url" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">{{ t('projects.view_project') }}</a>
+              <a v-if="project.github" :href="project.github" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">{{ t('projects.github') }}</a>
             </div>
           </div>
         </div>
@@ -76,7 +79,7 @@
   <!-- LIGHTBOX -->
   <div class="lightbox" :class="{ open: lightboxOpen }" role="dialog" aria-modal="true" @click.self="closeLightbox">
     <div class="lb-inner">
-      <button class="lb-close" @click="closeLightbox" aria-label="Cerrar">✕</button>
+      <button class="lb-close" @click="closeLightbox" :aria-label="t('projects.close')">✕</button>
       <div class="lb-preview-wrap">
         <div class="w-full h-full flex items-center justify-center relative">
           <img
@@ -87,7 +90,7 @@
           />
           <div v-else class="flex flex-col items-center gap-3 text-center w-full">
             <span class="lb-no-img-icon">🖼️</span>
-            <span class="lb-no-img-label">Sin imagen</span>
+            <span class="lb-no-img-label">{{ t('projects.no_image') }}</span>
           </div>
         </div>
         <button v-if="lbImages.length > 1" class="lb-arrow lb-prev" @click="lbPrev" :disabled="lbImgIdx === 0">‹</button>
@@ -95,9 +98,9 @@
       </div>
 
       <div class="flex items-center justify-between w-full">
-        <div class="flex flex-col gap-[2px]">
+        <div class="flex flex-col gap-0.5">
           <span class="lb-title">{{ currentProject?.title }}</span>
-          <span class="lb-subtitle">Imagen {{ lbImgIdx + 1 }}</span>
+          <span class="lb-subtitle">{{ t('projects.image') }} {{ lbImgIdx + 1 }}</span>
         </div>
         <span class="lb-counter">
           <span class="lb-counter-current">{{ lbImgIdx + 1 }}</span> / {{ lbImages.length }}
@@ -108,22 +111,25 @@
         <div
           v-for="(img, ii) in lbImages"
           :key="ii"
-          class="lb-thumb flex-shrink-0"
+          class="lb-thumb shrink-0"
           :class="{ active: ii === lbImgIdx }"
           @click="lbImgIdx = ii"
         >
           <img v-if="img" :src="img" :alt="`img ${ii}`" class="w-full h-full object-cover" />
-          <span v-else class="text-[22px] relative z-[2]">🖼</span>
+          <span v-else class="text-xl relative z-2">🖼</span>
         </div>
       </div>
 
-      <p class="lb-hint">← → navegar &nbsp;·&nbsp; ESC cerrar</p>
+      <p class="lb-hint">{{ t('projects.hint') }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const props = defineProps({
   projects: { type: Array, default: () => [] },
