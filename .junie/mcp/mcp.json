@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/raulsebastian/Library/Application Support/Herd/bin/php85",
+            "args": [
+                "/Users/raulsebastian/PhpstormProjects/raulsebastian.es/artisan",
+                "boost:mcp"
+            ]
+        },
+        "herd": {
+            "command": "/Users/raulsebastian/Library/Application Support/Herd/bin/php85",
+            "args": [
+                "/Applications/Herd.app/Contents/Resources/herd-mcp.phar"
+            ],
+            "env": {
+                "SITE_PATH": "/Users/raulsebastian/PhpstormProjects/raulsebastian.es"
+            }
+        }
+    }
+}
