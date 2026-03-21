@@ -131,7 +131,8 @@ jobs:
             fi
 
             echo "==> Actualizando código fuente..."
-            git pull origin master
+            git fetch origin master
+            git reset --hard origin/master
 
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
@@ -176,7 +177,8 @@ jobs:
             cd /srv/raulsebastian.es
 
             echo "==> Actualizando código fuente..."
-            git pull origin master
+            git fetch origin master
+            git reset --hard origin/master
 
             echo "==> Recargando cachés Laravel en el contenedor..."
             docker compose exec -T app php artisan config:cache
