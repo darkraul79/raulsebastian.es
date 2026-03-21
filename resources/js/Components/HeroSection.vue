@@ -9,7 +9,7 @@
           <div class="hero-cta">
             <a href="#projects" class="btn-primary">{{ t('hero.cta_projects') }}</a>
             <a href="#contact" class="btn-ghost">{{ t('hero.cta_talk') }}</a>
-            <a href="/cv/download" class="btn-ghost" download>
+            <a :href="`/cv/download?lang=${locale}`" class="btn-ghost" download>
               <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               {{ t('hero.cta_cv') }}
             </a>
@@ -47,7 +47,7 @@
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const badges = ['Laravel', 'Vue', 'PHP', 'MySQL', 'Blender', 'WordPress'];
 const isGlitching = ref(false);

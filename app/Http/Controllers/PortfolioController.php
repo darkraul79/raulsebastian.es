@@ -26,7 +26,9 @@ class PortfolioController extends Controller
 
     public function downloadCv(): Responsable
     {
-        return Pdf::view('pdf.cv')
+        $lang = in_array(request('lang'), ['es', 'en']) ? request('lang') : 'es';
+
+        return Pdf::view('pdf.cv', ['lang' => $lang])
             ->format('a4')
             ->name('raul-sebastian-cv.pdf')
             ->download();
