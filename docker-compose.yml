@@ -1,0 +1,65 @@
+services:
+
+  # ── Aplicación Laravel (PHP-FPM + Scheduler) ──────────────────────
+  app:
+    image: ${DOCKER_IMAGE:-ghcr.io/raulsebastian/raulsebastian.es}:${APP_VERSION:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    restart: unless-stopped
+    environment:
+      APP_ENV: production
+      APP_DEBUG: ${APP_DEBUG:-false}
+      APP_NAME: ${APP_NAME:-raulsebastian.es}
+      APP_KEY: ${APP_KEY}
+      APP_URL: ${APP_URL}
+      APP_LOCALE: ${APP_LOCALE:-es}
+      APP_FALLBACK_LOCALE: ${APP_FALLBACK_LOCALE:-es}
+      CACHE_STORE: file
+      SESSION_DRIVER: file
+      LOG_LEVEL: ${LOG_LEVEL:-error}
+      LARAVEL_PDF_DRIVER: dompdf
+      TZ: Europe/Madrid
+      TRUST_PROXIES: ${TRUST_PROXIES:-*}
+    volumes:
+      # bootstrap/cache debe ser escribible (config:cache, route:cache, etc.)
+      - bootstrap_cache:/var/www/html/bootstrap/cache
+      - ./storage/logs:/var/www/html/storage/logs
+      # El directorio public se comparte con Nginx para servir assets
+      - app_public:/var/www/html/public
+    networks:
+      - portfolio
+    healthcheck:
+      test: ["CMD-SHELL", "php -r \"exit(fsockopen('localhost', 9000) ? 0 : 1);\""]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  # ── Nginx (proxy reverso + assets estáticos) ──────────────────────
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - app_public:/var/www/html/public:ro
+    networks:
+      - portfolio
+
+# ── Volúmenes persistentes ─────────────────────────────────────────
+volumes:
+  app_public:
+    driver: local
+  bootstrap_cache:
+    driver: local
+
+# ── Red interna ───────────────────────────────────────────────────
+networks:
+  portfolio:
+    driver: bridge

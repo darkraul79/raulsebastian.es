@@ -1,0 +1,64 @@
+# Control de versiones
+.git
+.gitignore
+.gitattributes
+
+# Dependencias (se instalan en el build)
+node_modules
+vendor
+
+# Caché de bootstrap (se regenera en el build)
+bootstrap/cache/*.php
+
+# Assets compilados (se generan en el build)
+public/build
+public/hot
+
+# Entorno de desarrollo
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Testing
+tests
+phpunit.xml
+.phpunit.cache
+.phpunit.result.cache
+
+# Herramientas de desarrollo
+.idea
+.vscode
+.DS_Store
+.editorconfig
+
+# Docker
+docker-compose.override.yml
+
+# Documentación interna
+CLAUDE.md
+README.md
+design
+
+# Logs
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Pail
+storage/pail
+
+# IDE helpers
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+
+# Boost / AI
+.ai
+.aiassistant
+.claude
+.github/skills
+.junie
+.mcp.json
+boost.json
