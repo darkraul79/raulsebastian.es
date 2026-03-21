@@ -475,8 +475,8 @@
             <span class="header-meta-item"><a href="https://raulsebastian.es">raulsebastian.es</a></span>
             <span class="header-meta-item"><a href="mailto:info@raulsebastian.es">info@raulsebastian.es</a></span>
             <span class="header-meta-item"><a href="tel:+34615482046">+34 615 48 20 46</a></span>
-            <span class="header-meta-item"><a href="https://github.com/raulsebastian">github.com/raulsebastian</a></span>
-            <span class="header-meta-item"><a href="https://linkedin.com/in/raulsebastian">linkedin.com/in/raulsebastian</a></span>
+            <span class="header-meta-item"><a href="https://github.com/darkraul79">github.com/darkraul79</a></span>
+            <span class="header-meta-item"><a href="https://www.linkedin.com/in/raul-sebastian-pulido">linkedin.com/raul-sebastian-pulido</a></span>
         </div>
     </div>
 </div>
@@ -558,11 +558,11 @@
             </div>
             <div class="contact-row">
                 <div class="contact-lbl">GitHub</div>
-                <div class="contact-val"><a href="https://github.com/raulsebastian">github.com/raulsebastian</a></div>
+                <div class="contact-val"><a href="https://github.com/darkraul79">github.com/darkraul79</a></div>
             </div>
             <div class="contact-row">
                 <div class="contact-lbl">LinkedIn</div>
-                <div class="contact-val"><a href="https://linkedin.com/in/raulsebastian">linkedin.com/in/raulsebastian</a></div>
+                <div class="contact-val"><a href="https://www.linkedin.com/in/raul-sebastian-pulido">linkedin.com</a></div>
             </div>
         </div>
 
