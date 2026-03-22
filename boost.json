@@ -16,6 +16,14 @@
         "pest-testing",
         "inertia-vue-development",
         "tailwindcss-development",
-        "laravel-pdf"
+        "laravel-pdf",
+        "cli-developer",
+        "code-documenter",
+        "code-reviewer",
+        "eloquent-best-practices",
+        "laravel-best-practices",
+        "laravel-security",
+        "laravel-specialist",
+        "php-pro"
     ]
 }
