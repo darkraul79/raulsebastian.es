@@ -16,7 +16,6 @@ images:
   - myfactu/myfactu-3.webp
   - myfactu/myfactu-4.webp
   - myfactu/myfactu-5.webp
-  - myfactu/myfactu-6.webp
   - myfactu/myfactu-7.webp
   - myfactu/myfactu-8.webp
 ---

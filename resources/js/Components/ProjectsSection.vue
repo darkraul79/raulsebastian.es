@@ -23,6 +23,8 @@
                 :src="project.images[activeImages[pi] ?? 0]"
                 :alt="project.title"
                 class="w-full h-full object-cover"
+                :loading="pi < 3 ? 'eager' : 'lazy'"
+                decoding="async"
               />
               <span v-else class="text-5xl relative z-2">🚀</span>
               <div class="proj-img-overlay">
@@ -54,7 +56,7 @@
                 :class="{ active: (activeImages[pi] ?? 0) === ii }"
                 @click.stop="setActiveImage(pi, ii)"
               >
-                <img v-if="img" :src="img" :alt="`${project.title} ${ii + 1}`" class="w-full h-full object-cover" />
+                <img v-if="img" :src="img" :alt="`${project.title} ${ii + 1}`" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <span v-else class="text-base relative z-2">🖼</span>
               </div>
             </div>

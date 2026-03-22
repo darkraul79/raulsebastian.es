@@ -30,6 +30,20 @@ export default defineConfig({
         __VUE_I18N_LEGACY_API__: false,
         __INTLIFY_PROD_DEVTOOLS__: false,
     },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules/vue') || id.includes('node_modules/@inertiajs')) {
+                        return 'vue-vendor';
+                    }
+                    if (id.includes('node_modules/vue-i18n') || id.includes('node_modules/@intlify')) {
+                        return 'i18n-vendor';
+                    }
+                },
+            },
+        },
+    },
     server: {
         watch: {
             ignored: ['**/storage/framework/views/**'],

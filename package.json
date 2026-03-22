@@ -15,8 +15,12 @@
         "vite": "^8.0.0"
     },
     "dependencies": {
+        "@fontsource-variable/inter": "^5.2.8",
+        "@fontsource-variable/space-grotesk": "^5.2.10",
+        "@fontsource/jetbrains-mono": "^5.2.8",
         "@inertiajs/vue3": "^2.3.18",
         "@vitejs/plugin-vue": "^5.2.4",
+        "gif-encoder-2": "^1.0.5",
         "puppeteer": "^24.40.0",
         "vue": "^3.5.30",
         "vue-i18n": "^9.14.5"

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <canvas id="bg" class="fixed inset-0 pointer-events-none z-0"></canvas>
+  <div :class="{ 'lite-mode': !fullExperience }">
+    <canvas v-show="fullExperience" id="bg" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
     <NavBar :active-section="activeSection" />
     <HeroSection />
@@ -10,11 +10,12 @@
     <ClientsSection />
     <ContactSection />
     <AppFooter />
+    <ExperienceToggle />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import NavBar from '@/Components/NavBar.vue';
 import HeroSection from '@/Components/HeroSection.vue';
 import AboutSection from '@/Components/AboutSection.vue';
@@ -23,6 +24,10 @@ import ProjectsSection from '@/Components/ProjectsSection.vue';
 import ClientsSection from '@/Components/ClientsSection.vue';
 import ContactSection from '@/Components/ContactSection.vue';
 import AppFooter from '@/Components/AppFooter.vue';
+import ExperienceToggle from '@/Components/ExperienceToggle.vue';
+import { useExperience } from '@/composables/useExperience.js';
+
+const { fullExperience } = useExperience();
 
 const props = defineProps({
   projects: { type: Array, default: () => [] },
@@ -60,6 +65,9 @@ function initReveal() {
     }
   });
 }
+
+let canvasRafId = null;
+let canvasRunning = false;
 
 function initCanvas() {
   const canvas = document.getElementById('bg');
@@ -102,8 +110,12 @@ function initCanvas() {
     for (let i = -nv / 2; i <= nv / 2; i++) {
       const xb = W / 2 + i * (W / nv);
       const f = 1 - Math.abs(i) / (nv / 2);
+      const lg = ctx.createLinearGradient(W / 2, hy, xb, H);
+      lg.addColorStop(0, 'rgba(225,29,72,0)');
+      lg.addColorStop(0.12, `rgba(225,29,72,${.04 * f})`);
+      lg.addColorStop(1, `rgba(225,29,72,${.1 * f})`);
       ctx.beginPath(); ctx.moveTo(W / 2, hy); ctx.lineTo(xb, H);
-      ctx.strokeStyle = `rgba(225,29,72,${.1 * f})`; ctx.lineWidth = .7; ctx.stroke();
+      ctx.strokeStyle = lg; ctx.lineWidth = .7; ctx.stroke();
     }
     for (let j = 0; j < 10; j++) {
       const t = ((j / 10) + gridOff) % 1;
@@ -151,16 +163,40 @@ function initCanvas() {
       });
     });
 
-    requestAnimationFrame(drawAll);
+    if (canvasRunning) { canvasRafId = requestAnimationFrame(drawAll); }
   }
-  requestAnimationFrame(drawAll);
+
+  window._startCanvas = () => {
+    if (canvasRunning) { return; }
+    canvasRunning = true;
+    canvasRafId = requestAnimationFrame(drawAll);
+  };
+  window._stopCanvas = () => {
+    canvasRunning = false;
+    if (canvasRafId) { cancelAnimationFrame(canvasRafId); canvasRafId = null; }
+  };
+
+  canvasRunning = true;
+  canvasRafId = requestAnimationFrame(drawAll);
 }
 
 onMounted(() => {
-  initCanvas();
+  if (fullExperience.value) { initCanvas(); }
+  if (!fullExperience.value) { document.body.classList.add('lite-mode'); }
   initReveal();
   handleScroll();
   window.addEventListener('scroll', handleScroll, { passive: true });
+
+  watch(fullExperience, (val) => {
+    if (val) {
+      document.body.classList.remove('lite-mode');
+      if (!window._startCanvas) { initCanvas(); }
+      else { window._startCanvas(); }
+    } else {
+      document.body.classList.add('lite-mode');
+      window._stopCanvas?.();
+    }
+  });
 });
 
 onUnmounted(() => {

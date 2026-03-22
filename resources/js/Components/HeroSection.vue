@@ -9,6 +9,7 @@
           <div class="hero-cta">
             <a href="#projects" class="btn-primary">{{ t('hero.cta_projects') }}</a>
             <a href="#contact" class="btn-ghost">{{ t('hero.cta_talk') }}</a>
+            <span class="hero-cta-break"></span>
             <div class="cv-split-btn">
               <span class="cv-split-label" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -30,8 +31,13 @@
           </div>
         </div>
 
-        <!-- Logo 3D animation -->
-        <div class="logo-wrap">
+        <!-- Logo mobile (GIF) -->
+        <div class="logo-mobile">
+          <img class="logo-mobile-img" src="/images/logo-anim.svg" alt="Logo animado" loading="lazy" @error="onLogoGifError" />
+        </div>
+
+        <!-- Logo 3D animation (desktop) -->
+        <div class="logo-wrap" :class="{ lite: !fullExperience }">
           <div class="rings">
             <div class="ring r1"></div>
             <div class="ring r2"></div>
@@ -55,16 +61,26 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useExperience } from '@/composables/useExperience.js';
 
 const { t, locale } = useI18n();
+const { fullExperience } = useExperience();
 
 const badges = ['Laravel', 'Vue', 'PHP', 'MySQL', 'Blender', 'WordPress'];
 const isGlitching = ref(false);
 
+function onLogoGifError(e) {
+  // GIF not yet provided — show 3D logo fallback on mobile
+  const mobile = e.target.closest('.logo-mobile');
+  const desktop = document.querySelector('.logo-wrap');
+  if (mobile) { mobile.style.display = 'none'; }
+  if (desktop) { desktop.style.cssText = ''; }
+}
+
 function triggerGlitch() {
-  if (isGlitching.value) { return; }
+  if (isGlitching.value || !fullExperience.value) { return; }
   isGlitching.value = true;
   setTimeout(() => { isGlitching.value = false; }, 400);
 }
@@ -81,6 +97,50 @@ function scheduleGlitch() {
   }, 4000 + Math.random() * 4000);
 }
 
+function stopGlitch() {
+  clearTimeout(glitchTimer);
+  glitchTimer = null;
+  isGlitching.value = false;
+}
+
+const ringObservers = [];
+let desktopMql = null;
+
+function positionDots(ring, n) {
+  const r = ring.offsetWidth / 2;
+  if (r === 0) { return; }
+  ring.querySelectorAll('.ring-dot').forEach((dot, i) => {
+    const a = (i / n) * Math.PI * 2;
+    dot.style.cssText = `margin-left:${r * Math.cos(a) - 3}px;margin-top:${r * Math.sin(a) - 3}px`;
+  });
+}
+
+function restartAnimations() {
+  ['.r1', '.r2', '.r3'].forEach(sel => {
+    const el = document.querySelector(sel);
+    if (!el) { return; }
+    el.style.animationName = 'none';
+    void el.offsetWidth;
+    el.style.animationName = '';
+  });
+  document.querySelectorAll('.layer').forEach(el => {
+    el.style.animationName = 'none';
+    void el.offsetWidth;
+    el.style.animationName = '';
+  });
+  [['.r1', 5], ['.r2', 3]].forEach(([sel, n]) => {
+    const ring = document.querySelector(sel);
+    if (ring) { positionDots(ring, n); }
+  });
+}
+
+function onBreakpointChange(e) {
+  if (e.matches && fullExperience.value) {
+    // Crossed back to desktop — rings are visible again, restart animations
+    requestAnimationFrame(restartAnimations);
+  }
+}
+
 onMounted(async () => {
   await nextTick();
 
@@ -95,10 +155,29 @@ onMounted(async () => {
       dot.style.cssText = `margin-left:${r * Math.cos(a) - 3}px;margin-top:${r * Math.sin(a) - 3}px`;
       ring.appendChild(dot);
     }
+    const ro = new ResizeObserver(() => positionDots(ring, n));
+    ro.observe(ring);
+    ringObservers.push(ro);
   });
 
-  scheduleGlitch();
+  desktopMql = window.matchMedia('(min-width: 901px)');
+  desktopMql.addEventListener('change', onBreakpointChange);
+
+  if (fullExperience.value) { scheduleGlitch(); }
+
+  watch(fullExperience, (val) => {
+    if (val) {
+      scheduleGlitch();
+      if (desktopMql?.matches) { requestAnimationFrame(restartAnimations); }
+    } else {
+      stopGlitch();
+    }
+  });
 });
 
-onUnmounted(() => { clearTimeout(glitchTimer); });
+onUnmounted(() => {
+  stopGlitch();
+  ringObservers.forEach(ro => ro.disconnect());
+  desktopMql?.removeEventListener('change', onBreakpointChange);
+});
 </script>
