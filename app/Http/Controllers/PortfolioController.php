@@ -17,6 +17,7 @@ class PortfolioController extends Controller
     {
         return Inertia::render('Home', [
             'projects' => $this->projects->all(),
+            'projectsBatchSize' => config('portfolio.projects_batch_size'),
         ]);
     }
 

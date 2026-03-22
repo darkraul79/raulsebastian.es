@@ -22,8 +22,8 @@
             </i18n-t>
           </div>
           <div class="about-stats">
-            <div v-for="stat in stats" :key="stat.key" class="stat-card">
-              <div class="stat-value">{{ stat.value }}</div>
+            <div v-for="(stat, i) in stats" :key="stat.key" class="stat-card" @mouseenter="animateStat(i)">
+              <div class="stat-value">{{ statCounts[i] }}+</div>
               <div class="stat-label">{{ t(stat.key) }}</div>
             </div>
           </div>
@@ -34,13 +34,32 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
 const stats = [
-  { value: '25+', key: 'about.stat_years' },
-  { value: '50+', key: 'about.stat_projects' },
-  { value: '20+', key: 'about.stat_clients' },
+  { target: 25, key: 'about.stat_years' },
+  { target: 50, key: 'about.stat_projects' },
+  { target: 20, key: 'about.stat_clients' },
 ];
+
+const statCounts = reactive(stats.map(s => s.target));
+
+function animateStat(index) {
+  const target = stats[index].target;
+  const duration = 650;
+  const startTime = performance.now();
+  statCounts[index] = 0;
+
+  function step(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    statCounts[index] = Math.round(eased * target);
+    if (progress < 1) { requestAnimationFrame(step); }
+  }
+
+  requestAnimationFrame(step);
+}
 </script>

@@ -12,8 +12,8 @@
     "cta_projects": "View Projects",
     "cta_talk": "Let's Talk",
     "cta_cv": "CV PDF",
-    "cta_cv_view": "View",
-    "cta_cv_download": "Download"
+    "cta_cv_view": "View CV",
+    "cta_cv_download": "Download CV"
   },
   "about": {
     "label": "01 — About",
@@ -34,12 +34,13 @@
     "label": "03 — Projects",
     "title": "Recent work.",
     "view": "View",
-    "view_project": "View project ↗",
-    "github": "GitHub ↗",
+    "view_project": "View project",
+    "github": "GitHub",
     "image": "Image",
     "no_image": "No image",
     "hint": "← → navigate · ESC close",
-    "close": "Close"
+    "close": "Close",
+    "load_more": "Load more projects"
   },
   "clients": {
     "trusted": "Trusted by"

@@ -8,11 +8,12 @@
           <span class="blink-cursor">_</span>
         </div>
       </div>
-      <div class="projects-grid reveal d1">
+      <div class="projects-grid">
         <div
-          v-for="(project, pi) in projects"
+          v-for="(project, pi) in visibleProjects"
           :key="project.slug"
-          class="proj-card glass-card overflow-hidden flex flex-col"
+          :data-pi="pi"
+          class="proj-card glass-card overflow-hidden flex flex-col reveal"
         >
           <!-- Gallery -->
           <div class="proj-gallery relative cursor-pointer overflow-hidden" @click="openLightbox(pi, activeImages[pi] ?? 0)">
@@ -67,11 +68,18 @@
               <span v-for="tag in project.tags" :key="tag" class="proj-tag">{{ tag }}</span>
             </div>
             <div class="flex gap-3 mt-4">
-              <a v-if="project.url" :href="project.url" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">{{ t('projects.view_project') }}</a>
-              <a v-if="project.github" :href="project.github" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">{{ t('projects.github') }}</a>
+              <a v-if="project.url" :href="project.url" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">{{ t('projects.view_project') }}<span class="btn-arrow-ne">↗</span></a>
+              <a v-if="project.github" :href="project.github" target="_blank" rel="noopener" class="btn-ghost text-xs px-3 py-2">{{ t('projects.github') }}<span class="btn-arrow-ne">↗</span></a>
             </div>
           </div>
         </div>
+      </div>
+
+      <div v-if="hasMore" class="projects-load-more reveal">
+        <button class="btn-ghost" @click="loadMore">
+          {{ t('projects.load_more') }}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -126,14 +134,29 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onUnmounted } from 'vue';
+import { ref, reactive, computed, nextTick, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t, locale } = useI18n();
 
 const props = defineProps({
   projects: { type: Array, default: () => [] },
+  batchSize: { type: Number, default: 3 },
 });
+
+const visibleCount = ref(props.batchSize);
+const visibleProjects = computed(() => props.projects.slice(0, visibleCount.value));
+const hasMore = computed(() => visibleCount.value < props.projects.length);
+
+async function loadMore() {
+  const prev = visibleCount.value;
+  visibleCount.value = Math.min(prev + props.batchSize, props.projects.length);
+  await nextTick();
+  const newCards = document.querySelectorAll(`.proj-card[data-pi]:not(.visible)`);
+  newCards.forEach((card, i) => {
+    setTimeout(() => card.classList.add('visible'), i * 120);
+  });
+}
 
 const activeImages = reactive({});
 

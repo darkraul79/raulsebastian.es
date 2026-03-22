@@ -11,10 +11,14 @@ tags:
 featured: true
 order: 10
 images:
-  - myfactu-1.webp
-  - myfactu-2.webp
-  - myfactu-3.webp
-  - myfactu-4.webp
+  - myfactu/myfactu-1.webp
+  - myfactu/myfactu-2.webp
+  - myfactu/myfactu-3.webp
+  - myfactu/myfactu-4.webp
+  - myfactu/myfactu-5.webp
+  - myfactu/myfactu-6.webp
+  - myfactu/myfactu-7.webp
+  - myfactu/myfactu-8.webp
 ---
 
 Sistema completo de facturación para autónomo individual. Incluye emisión de facturas con Verifactu, gestión de gastos, declaraciones trimestrales automáticas y exportación Excel para modelos 303, 390 y Renta.

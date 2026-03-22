@@ -1,0 +1,125 @@
+{
+  "url": "https://myfactu.test",
+  "project": "myfactu",
+  "viewport": { "width": 1440, "height": 810 },
+  "outputDir": "public/images/projects/myfactu",
+  "waitFor": 1500,
+  "manualLogin": {
+    "path": "/admin/login",
+    "readySelector": ".fi-sidebar"
+  },
+
+  "replacements": [
+    {
+      "selector": "tbody tr:nth-child(1) td.fi-ta-cell-customer\\.name a div span",
+      "text": "Distribuciones Pérez Martín SL"
+    },
+    {
+      "selector": "tbody tr:nth-child(2) td.fi-ta-cell-customer\\.name a div span",
+      "text": "Tecnologías Innovadoras SA"
+    },
+    {
+      "selector": "tbody tr:nth-child(3) td.fi-ta-cell-customer\\.name a div span",
+      "text": "Servicios Integrales Gómez SL"
+    },
+    {
+      "selector": "tbody tr:nth-child(4) td.fi-ta-cell-customer\\.name a div span",
+      "text": "Construcciones Navarro e Hijos SL"
+    },
+    {
+      "selector": "tbody tr:nth-child(5) td.fi-ta-cell-customer\\.name a div span",
+      "text": "Asesoría Fiscal Rodríguez SC"
+    },
+    {
+      "selector": "tbody tr:nth-child(6) td.fi-ta-cell-customer\\.name a div span",
+      "text": "Editorial Montserrat SL"
+    },
+    {
+      "selector": "tbody tr:nth-child(1) td.fi-ta-cell-name a div div div.min-w-0",
+      "text": "Distribuciones Pérez Martín SL"
+    },
+    {
+      "selector": "tbody tr:nth-child(2) td.fi-ta-cell-name a div div div.min-w-0",
+      "text": "Tecnologías Innovadoras SA"
+    },
+    {
+      "selector": "tbody tr:nth-child(3) td.fi-ta-cell-name a div div div.min-w-0",
+      "text": "Servicios Integrales Gómez SL"
+    },
+    {
+      "selector": "tbody tr:nth-child(4) td.fi-ta-cell-name a div div div.min-w-0",
+      "text": "Construcciones Navarro e Hijos SL"
+    },
+    {
+      "selector": "tbody tr:nth-child(5) td.fi-ta-cell-name a div div div.min-w-0",
+      "text": "Asesoría Fiscal Rodríguez SC"
+    },
+    {
+      "selector": "tbody tr:nth-child(1) td.fi-ta-cell-nif a div span, tbody tr:nth-child(1) td.fi-ta-cell-cif a div span",
+      "text": "B12345678"
+    },
+    {
+      "selector": "tbody tr:nth-child(2) td.fi-ta-cell-nif a div span, tbody tr:nth-child(2) td.fi-ta-cell-cif a div span",
+      "text": "A87654321"
+    },
+    {
+      "selector": "tbody tr:nth-child(3) td.fi-ta-cell-nif a div span, tbody tr:nth-child(3) td.fi-ta-cell-cif a div span",
+      "text": "B23456789"
+    },
+    {
+      "selector": "#form\\.datos-del-cliente\\:\\:data\\:\\:section > section > div > div > div:nth-child(1) > div > div > div > div > div",
+      "text": "Distribuciones Pérez Martín SL"
+    },
+    {
+      "selector": "#form\\.datos-del-cliente\\:\\:data\\:\\:section > section > div > div > div:nth-child(2) > div > div > div > div > div",
+      "text": "B12345678"
+    },
+    {
+      "selector": "#form\\.datos-del-cliente\\:\\:data\\:\\:section > section > div > div > div:nth-child(3) > div > div > div > div > div",
+      "text": "Calle Mayor, 15, 28013 Madrid"
+    }
+  ],
+
+  "shots": [
+    {
+      "name": "myfactu-1",
+      "path": "/admin/invoices",
+      "waitFor": ".fi-ta-table"
+    },
+    {
+      "name": "myfactu-2",
+      "path": "/admin/invoices/create?customer_id=21&invoice_group_id=5",
+      "waitFor": ".fi-form"
+    },
+    {
+      "name": "myfactu-3",
+      "path": "/admin/expenses",
+      "waitFor": ".fi-ta-table"
+    },
+    {
+      "name": "myfactu-4",
+      "path": "/admin/expenses/create",
+      "waitFor": ".fi-form"
+    },
+    {
+      "name": "myfactu-5",
+      "path": "/admin/quarterly-vat",
+      "waitFor": ".fi-ta-table"
+    },
+    {
+      "name": "myfactu-6",
+      "path": "/admin/clientes",
+      "waitFor": ".fi-ta-table"
+    },
+    {
+      "name": "myfactu-7",
+      "path": "/admin/clientes/create",
+      "waitFor": ".fi-form"
+    },
+    {
+      "name": "myfactu-8",
+      "path": "/admin",
+      "waitFor": ".fi-wi-stats-overview"
+    }
+  ]
+}

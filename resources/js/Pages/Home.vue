@@ -6,7 +6,7 @@
     <HeroSection />
     <AboutSection />
     <StackSection />
-    <ProjectsSection :projects="projects" />
+    <ProjectsSection :projects="projects" :batch-size="projectsBatchSize" />
     <ClientsSection />
     <ContactSection />
     <AppFooter />
@@ -26,6 +26,7 @@ import AppFooter from '@/Components/AppFooter.vue';
 
 const props = defineProps({
   projects: { type: Array, default: () => [] },
+  projectsBatchSize: { type: Number, default: 3 },
 });
 
 const activeSection = ref('hero');
