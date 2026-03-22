@@ -21,6 +21,7 @@
     @inertiaHead
 </head>
 <body>
+    <div class="retro-horizon" aria-hidden="true"></div>
     @inertia
 </body>
 </html>

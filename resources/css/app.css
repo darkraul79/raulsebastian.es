@@ -91,6 +91,14 @@ section {
     @apply font-extrabold tracking-[-0.03em] mb-12;
 }
 
+.retro-horizon {
+    display: none;
+    position:fixed;bottom:41.6vh;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,rgba(225,29,72,0.45),rgba(168,85,247,0.35),transparent);
+    pointer-events:none;z-index:0;filter:blur(1px);
+}
+
+
 /* ── Scroll reveal ── */
 .reveal {
     @apply opacity-0;
