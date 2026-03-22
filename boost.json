@@ -13,6 +13,7 @@
     ],
     "sail": false,
     "skills": [
+        "pest-testing",
         "inertia-vue-development",
         "tailwindcss-development",
         "laravel-pdf"
