@@ -11,4 +11,6 @@ export const i18n = createI18n({
     locale: savedLocale,
     fallbackLocale: 'es',
     messages: { es, en },
+    warnHtmlInMessage: 'off',
+    warnHtmlMessage: false,
 });

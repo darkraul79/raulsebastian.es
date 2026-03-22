@@ -12,7 +12,7 @@
         </div>
         <div class="reveal d1">
           <div class="sec-heading">
-            <h2 class="sec-h2 about-h2 mb-0" v-html="t('about.title').replace('\n', '<br>')"></h2>
+            <h2 class="sec-h2 about-h2 mb-0">{{ t('about.title') }}</h2>
           </div>
           <div class="about-paragraphs">
             <p class="about-p">{{ t('about.p1') }}</p>

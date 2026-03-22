@@ -594,6 +594,7 @@ section {
 
 .about-h2 {
     @apply mb-6;
+    white-space: pre-line;
 }
 
 .about-paragraphs {
