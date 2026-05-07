@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mockup — Comparativa Mobile</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Inter", system-ui, sans-serif;
+    background: #ECE7DC;
+    padding: 80px 60px;
+  }
+  .wrap { max-width: 1700px; margin: 0 auto; }
+  .head {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #C8BEAD;
+  }
+  .head .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6F6557;
+    margin-bottom: 20px;
+  }
+  .head h1 {
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: 72px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 22px;
+  }
+  .head h1 em {
+    color: #8A7B6A;
+    font-style: italic;
+  }
+  .head p {
+    font-size: 16px;
+    color: #3D3D3D;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .col {
+    text-align: center;
+  }
+  .col-label {
+    margin-bottom: 30px;
+  }
+  .col-label .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6F6557;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .col-label .name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: #0F0F0F;
+  }
+  .phone {
+    display: inline-block;
+    background: #1A1A1A;
+    border-radius: 48px;
+    padding: 14px;
+    box-shadow: 0 50px 120px rgba(0,0,0,0.18), 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .phone-screen {
+    width: 380px;
+    height: 6000px;
+    border-radius: 36px;
+    overflow: hidden;
+    background: #FAF7F1;
+    position: relative;
+  }
+  .phone-screen iframe {
+    border: 0;
+    width: 380px;
+    height: 6000px;
+    display: block;
+  }
+  .col-tags {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .col-tags span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6F6557;
+    padding: 6px 12px;
+    border: 1px solid #C8BEAD;
+    border-radius: 50px;
+  }
+  .foot {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid #C8BEAD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6F6557;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=JetBrains+Mono:wght@400&display=swap');
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">ACIP · Comparativa Mobile</div>
+    <h1>Mismo contenido, <em>dos voces.</em></h1>
+    <p>El móvil concentra las decisiones de jerarquía y ritmo. Comparativa lado a lado de cómo se lee cada propuesta en pantalla pequeña.</p>
+  </header>
+
+  <div class="pair">
+    <div class="col">
+      <div class="col-label">
+        <span class="num">Opción A</span>
+        <span class="name">Editorial Clásica</span>
+      </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <iframe src="index.html" scrolling="no"></iframe>
+        </div>
+      </div>
+      <div class="col-tags">
+        <span>Crema cálido</span>
+        <span>Editorial</span>
+        <span>Tipo grande</span>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="col-label">
+        <span class="num">Opción B</span>
+        <span class="name">Norm — Minimalismo</span>
+      </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <iframe src="ACIP - Norm.html" scrolling="no"></iframe>
+        </div>
+      </div>
+      <div class="col-tags">
+        <span>Hueso neutro</span>
+        <span>Minimalista</span>
+        <span>Foto protagonista</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>ACIP — Mockup mobile · Abril 2026</span>
+    <span>iPhone 14 · 380 × Full page</span>
+  </div>
+</div>
+</body>
+</html>

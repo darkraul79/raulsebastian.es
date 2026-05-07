@@ -10,3 +10,7 @@ Route::middleware('throttle:20,1')->group(function () {
     Route::get('/cv/preview', [PortfolioController::class, 'previewCv'])->name('cv.preview');
     Route::get('/cv/download', [PortfolioController::class, 'downloadCv'])->name('cv.download');
 });
+
+Route::get('/proyectos/acip', function () {
+    return redirect('/proyectos/ACIP/Presentacion-Cliente.html');
+})->name('proyectos.acip');
