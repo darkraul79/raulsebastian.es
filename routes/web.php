@@ -14,3 +14,6 @@ Route::middleware('throttle:20,1')->group(function () {
 Route::get('/proyectos/acip', function () {
     return redirect('/proyectos/ACIP/Presentacion-Cliente.html');
 })->name('proyectos.acip');
+Route::get('/proyectos/acipv3-2', function () {
+    return redirect('/proyectos/ACIPv3-2/ACIP - Norm v3.html');
+})->name('proyectos.acipv3');

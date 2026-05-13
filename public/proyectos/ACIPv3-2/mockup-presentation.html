@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>ACIP — Propuestas de Rediseño</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Inter", system-ui, sans-serif;
+    background: #ECE7DC;
+    color: #0F0F0F;
+    padding: 80px 60px;
+    min-height: 100vh;
+  }
+  .deck {
+    max-width: 2400px;
+    margin: 0 auto;
+  }
+  .deck-head {
+    text-align: center;
+    margin-bottom: 80px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #C8BEAD;
+  }
+  .deck-eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6F6557;
+    margin-bottom: 24px;
+  }
+  .deck-title {
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: 84px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+  .deck-title em {
+    color: #8A7B6A;
+    font-style: italic;
+  }
+  .deck-subtitle {
+    font-size: 17px;
+    color: #3D3D3D;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .option {
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .option-tab {
+    padding: 22px 28px;
+    background: #0F0F0F;
+    color: #FAF7F1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .option-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .option-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+  }
+  .option-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .option-tagline {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .browser {
+    background: #f5f1ea;
+    border-bottom: 1px solid #E4E1DA;
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #E4E1DA;
+  }
+  .browser-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .browser-dots span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #D9D3C5;
+  }
+  .browser-dots span:nth-child(1) { background: #ED6A5E; }
+  .browser-dots span:nth-child(2) { background: #F5BF4F; }
+  .browser-dots span:nth-child(3) { background: #62C554; }
+  .browser-url {
+    flex: 1;
+    background: #fff;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #6F6557;
+    text-align: center;
+  }
+  .browser-frame {
+    width: 100%;
+    aspect-ratio: 16 / 22;
+    border: 0;
+    display: block;
+    background: #FAF7F1;
+  }
+  .option-foot {
+    padding: 28px 32px;
+    background: #FAF7F1;
+    border-top: 1px solid #E4E1DA;
+  }
+  .option-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #3D3D3D;
+    margin-bottom: 18px;
+  }
+  .option-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .option-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6F6557;
+    padding: 5px 10px;
+    border: 1px solid #C8BEAD;
+    border-radius: 50px;
+  }
+  .deck-foot {
+    margin-top: 80px;
+    padding-top: 48px;
+    border-top: 1px solid #C8BEAD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6F6557;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap');
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="deck">
+  <header class="deck-head">
+    <div class="deck-eyebrow">ACIP · Propuesta de rediseño · Abril 2026</div>
+    <h1 class="deck-title">Dos direcciones para <em>el nuevo sitio.</em></h1>
+    <p class="deck-subtitle">Mismo contenido, mismo tono, dos arquitecturas visuales distintas para que elijáis la que mejor representa el estudio.</p>
+  </header>
+
+  <div class="options">
+    <article class="option">
+      <div class="option-tab">
+        <div class="option-label">
+          <span class="option-num">OPCIÓN A</span>
+          <span class="option-name">Editorial Clásica</span>
+        </div>
+        <span class="option-tagline">Cálido · Tipográfico</span>
+      </div>
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="browser-url">proyectosacip.com</div>
+        </div>
+        <iframe class="browser-frame" src="index.html" title="ACIP — Editorial"></iframe>
+      </div>
+      <div class="option-foot">
+        <p class="option-desc">Aproximación editorial con paleta crema cálida, tipografía Cormorant Garamond para titulares y secciones moduladas con grids editoriales. Mayor densidad visual y juego con el material gráfico.</p>
+        <div class="option-tags">
+          <span class="option-tag">Crema cálido</span>
+          <span class="option-tag">Editorial</span>
+          <span class="option-tag">Hero con vídeo</span>
+          <span class="option-tag">Proceso ilustrado</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="option">
+      <div class="option-tab">
+        <div class="option-label">
+          <span class="option-num">OPCIÓN B</span>
+          <span class="option-name">Norm — Minimalismo</span>
+        </div>
+        <span class="option-tagline">Limpio · Espacioso</span>
+      </div>
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="browser-url">proyectosacip.com</div>
+        </div>
+        <iframe class="browser-frame" src="ACIP - Norm.html" title="ACIP — Norm"></iframe>
+      </div>
+      <div class="option-foot">
+        <p class="option-desc">Inspirado en estudios escandinavos (Norm Architects). Generoso espacio en blanco, paleta neutra y restringida, tipografía discreta. La fotografía toma protagonismo absoluto.</p>
+        <div class="option-tags">
+          <span class="option-tag">Hueso neutro</span>
+          <span class="option-tag">Minimalista</span>
+          <span class="option-tag">Foto protagonista</span>
+          <span class="option-tag">Grid generoso</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="deck-foot">
+    <span>ACIP — Arquitectura + Construcción</span>
+    <span>Madrid · Las Rozas</span>
+  </div>
+</div>
+</body>
+</html>

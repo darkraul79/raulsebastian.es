@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mockup — Norm (Versión B)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Inter", system-ui, sans-serif;
+    background: #E6E2D7;
+    padding: 60px 50px;
+  }
+  .wrap { max-width: 1500px; margin: 0 auto; }
+  .head {
+    margin-bottom: 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #BFB7A8;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .head-left .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6F6557;
+    margin-bottom: 18px;
+  }
+  .head-left h1 {
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: 64px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+  .head-left h1 em {
+    color: #8A7B6A;
+    font-style: italic;
+  }
+  .head-right {
+    text-align: right;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6F6557;
+    line-height: 1.8;
+  }
+  .browser-shell {
+    background: #FFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.12), 0 8px 20px rgba(0,0,0,0.05);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 22px;
+    background: #fafaf7;
+    border-bottom: 1px solid #E4E1DA;
+  }
+  .browser-dots {
+    display: flex;
+    gap: 7px;
+  }
+  .browser-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ED6A5E;
+  }
+  .browser-dots span:nth-child(2) { background: #F5BF4F; }
+  .browser-dots span:nth-child(3) { background: #62C554; }
+  .browser-url {
+    flex: 1;
+    background: #FFF;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: #6F6557;
+    text-align: center;
+  }
+  .browser-stage {
+    background: #fafaf7;
+    overflow: hidden;
+    position: relative;
+  }
+  iframe {
+    border: 0;
+    display: block;
+    width: 1400px;
+    height: 7500px;
+  }
+  .foot {
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6F6557;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=JetBrains+Mono:wght@400&display=swap');
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="head-left">
+      <div class="eyebrow">Opción B · Norm Architects</div>
+      <h1>Limpio, espacioso, <em>silencioso.</em></h1>
+    </div>
+    <div class="head-right">
+      <div>ACIP · Mockup desktop</div>
+      <div>1400 × Full page</div>
+    </div>
+  </header>
+  <div class="browser-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">proyectosacip.com</div>
+    </div>
+    <div class="browser-stage">
+      <iframe src="ACIP - Norm.html" scrolling="no"></iframe>
+    </div>
+  </div>
+  <div class="foot">
+    <span>ACIP — Arquitectura + Construcción</span>
+    <span>Madrid · Las Rozas</span>
+  </div>
+</div>
+</body>
+</html>
