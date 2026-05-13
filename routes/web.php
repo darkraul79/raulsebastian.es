@@ -17,3 +17,6 @@ Route::get('/proyectos/acip', function () {
 Route::get('/proyectos/acipv3-2', function () {
     return redirect('/proyectos/ACIPv3-2/ACIP - Norm v3.html');
 })->name('proyectos.acipv3');
+Route::get('/proyectos/acipv4', function () {
+    return redirect('/proyectos/ACIPv4/ACIP - Norm v4.html');
+})->name('proyectos.acipv4');
