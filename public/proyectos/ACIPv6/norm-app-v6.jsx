@@ -157,12 +157,12 @@ function Hero() {
         <span>Arquitectura + obra · llave en mano</span>
       </div>
       <div className="hero-line"><span className="line-mark" /></div>
-      <div className="hero-content" style={{ padding: "140px 24px 100px" }}>
+      <div className="hero-content">
         <h1 className="hero-title">Arquitectura y construcción <span className="it">bajo una misma visión.</span></h1>
       </div>
       <div className="hero-foot">
-        <span>ACIP — Madrid · Est. 2010</span>
-        <span>Scroll ↓</span>
+        <span></span>
+        <span></span>
       </div>
       <div className="hero-dots">
         {HERO_SLIDES.map((_, i) =>
@@ -199,7 +199,7 @@ function Philosophy() {
           <p>Escuchamos antes de proyectar. En la primera reunión entendemos cómo vives, qué necesitas y qué imaginas, porque solo así podemos llevar esa visión a la realidad.</p>
           <p>Cuidamos cada decisión: diseño, planificación, obra y acabados. Un único interlocutor durante todo el proceso, presupuesto cerrado desde el inicio y plazos que se cumplen.</p>
           <div className="philosophy-quote">
-            <span className="philosophy-quote-mark">“</span>
+            <span className="philosophy-quote-mark"></span>
             <p>Diseñamos espacios <span className="it">pensados para vivirse con calma.</span></p>
           </div>
         </div>
@@ -286,9 +286,9 @@ function Proceso() {
   const p = PROCESO[active];
 
   return (
-    <section className="proceso-tl" id="proceso">
+    <section className="proceso-tl" id="proceso" style={{ padding: "80px 40px" }}>
       <div className="proceso-tl-inner">
-        <div className="proceso-tl-head">
+        <div className="proceso-tl-head" style={{ margin: "0px 0px 60px" }}>
           <div>
             <span className="meta">El proceso ACIP</span>
             <h2>Un proceso más claro. <span className="it">
@@ -310,7 +310,7 @@ Una ejecución más coherente.</span></h2>
                 role="tab"
                 aria-selected={active === i}
                 className={`proceso-tl-step ${state}`}
-                onClick={() => goTo(i)}>
+                onClick={() => goTo(i)} style={{ fontSize: "20px" }}>
                 {step.num}
               </button>);
 
@@ -320,7 +320,7 @@ Una ejecución más coherente.</span></h2>
           className="proceso-tl-content"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}>
-          <span className="proceso-tl-num">{p.num} —</span>
+          <span className="proceso-tl-num" style={{ fontSize: "30px" }}>{p.num} —</span>
           <h3 className="proceso-tl-title">{p.title}</h3>
           <p className="proceso-tl-desc">{p.desc}</p>
         </div>
@@ -937,6 +937,14 @@ function Footer({ navigate }) {
     </footer>);
 }
 
+// ============= CLOSING IMAGE — pausa visual antes del footer =============
+function ClosingImage() {
+  return (
+    <section className="closing-img" aria-hidden="true">
+      <img src={R["r-closing"]} alt="" loading="lazy" />
+    </section>);
+}
+
 // ============= APP =============
 function App() {
   const [route, setRoute] = useState({ page: "home", param: null });
@@ -973,6 +981,7 @@ function App() {
     <>
       <Nav page={route.page} navigate={navigate} openMobile={openMobile} setOpenMobile={setOpenMobile} />
       {view}
+      <ClosingImage />
       <Footer navigate={navigate} />
     </>);
 }

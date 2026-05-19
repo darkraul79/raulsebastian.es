@@ -2104,8 +2104,29 @@ button { font: inherit; background: none; border: none; cursor: pointer; color: 
   .proceso-tl-desc { font-size: 13px; line-height: 1.75; margin: 0; }
 }
 
+/* ============= CLOSING IMAGE — pausa visual antes del footer ============= */
+.closing-img {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+.closing-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 900px) {
+  .closing-img img { aspect-ratio: 4 / 3; }
+}
+
 </style>
 
+<meta name="ext-resource-dependency" content="closing-interior.jpeg" data-resource-id="r-closing" />
 <meta name="ext-resource-dependency" content="hero-1.jpeg" data-resource-id="rh1" />
 <meta name="ext-resource-dependency" content="hero-2.jpeg" data-resource-id="rh2" />
 <meta name="ext-resource-dependency" content="hero-3.jpeg" data-resource-id="rh3" />
