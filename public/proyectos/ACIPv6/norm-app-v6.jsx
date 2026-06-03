@@ -874,6 +874,128 @@ function FaqsPage({ navigate }) {
     </main>);
 }
 
+// ============= PÁGINAS LEGALES (contenido estático) =============
+const LEGAL = {
+  privacidad: {
+    crumb: "Política de privacidad",
+    title: ["Política de ", "privacidad."],
+    lead: "Cómo tratamos y protegemos los datos personales que nos facilita al contactar con ACIP.",
+    updated: "Última actualización · Junio 2026",
+    intro: "En ACIP Arquitectura y Construcciones tratamos sus datos con la misma rigurosidad con la que abordamos cada proyecto. Esta política explica qué información recogemos, con qué finalidad y qué derechos le asisten en todo momento.",
+    sections: [
+      { id: "responsable", h: "Responsable del tratamiento", body: [
+        { p: "El responsable del tratamiento de sus datos es ACIP Arquitectura y Construcciones, con domicilio en Av. de Atenas 1, Local 167, C.C. La Tortuga, Las Rozas de Madrid (Madrid)." },
+        { p: "Para cualquier cuestión relativa a esta política puede escribirnos a info@proyectosacip.com." } ] },
+      { id: "datos", h: "Datos que recogemos", body: [
+        { p: "Recogemos únicamente los datos que usted nos facilita de forma voluntaria a través del formulario de contacto, por correo electrónico o por teléfono:" },
+        { list: [
+          "Datos identificativos: nombre y apellidos.",
+          "Datos de contacto: correo electrónico y teléfono.",
+          "Información sobre su proyecto: tipología, ubicación y descripción de lo que desea construir o reformar." ] } ] },
+      { id: "finalidad", h: "Finalidad del tratamiento", body: [
+        { p: "Tratamos su información con las siguientes finalidades:" },
+        { list: [
+          "Atender su solicitud y elaborar una primera valoración del encaje de su proyecto.",
+          "Mantener la comunicación necesaria durante el desarrollo de una propuesta.",
+          "Enviarle información relacionada con nuestros servicios, solo si usted lo ha consentido expresamente." ] },
+        { p: "No tomamos decisiones automatizadas ni elaboramos perfiles a partir de sus datos." } ] },
+      { id: "legitimacion", h: "Base legal", body: [
+        { p: "La base que legitima el tratamiento es su <strong>consentimiento</strong>, otorgado al remitirnos su solicitud, así como la aplicación de medidas precontractuales a petición suya. Puede retirar su consentimiento en cualquier momento sin que ello afecte a la licitud del tratamiento previo." } ] },
+      { id: "conservacion", h: "Plazo de conservación", body: [
+        { p: "Conservaremos sus datos durante el tiempo necesario para atender su solicitud y, en su caso, durante la vigencia de la relación profesional. Una vez finalizada, se mantendrán bloqueados durante los plazos legalmente exigibles antes de su supresión definitiva." } ] },
+      { id: "destinatarios", h: "Destinatarios", body: [
+        { p: "Sus datos no se cederán a terceros salvo obligación legal. Únicamente podrán acceder a ellos los proveedores de servicios tecnológicos que nos asisten (alojamiento web, correo electrónico), con los que mantenemos los correspondientes contratos de encargo de tratamiento." } ] },
+      { id: "derechos", h: "Sus derechos", body: [
+        { p: "Puede ejercer en cualquier momento sus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, escribiéndonos a info@proyectosacip.com e indicando el derecho que desea ejercer." },
+        { p: "Asimismo, si considera que el tratamiento no se ajusta a la normativa, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es)." } ] },
+      { id: "seguridad", h: "Seguridad", body: [
+        { p: "Aplicamos las medidas técnicas y organizativas necesarias para garantizar la seguridad de sus datos y evitar su alteración, pérdida o acceso no autorizado, atendiendo al estado de la tecnología y a la naturaleza de la información tratada." } ] } ] },
+  cookies: {
+    crumb: "Política de cookies",
+    title: ["Política de ", "cookies."],
+    lead: "Información sobre las cookies que utiliza este sitio web y cómo gestionarlas.",
+    updated: "Última actualización · Junio 2026",
+    intro: "Este sitio utiliza un número mínimo de cookies, estrictamente las necesarias para su correcto funcionamiento y para entender de forma anónima cómo se navega por él.",
+    sections: [
+      { id: "que-son", h: "Qué son las cookies", body: [
+        { p: "Una cookie es un pequeño archivo de texto que un sitio web almacena en su navegador para recordar información sobre su visita. Por sí mismas no identifican personalmente al usuario." } ] },
+      { id: "tipos", h: "Cookies que utilizamos", body: [
+        { list: [
+          "Técnicas: imprescindibles para la navegación y el funcionamiento básico del sitio.",
+          "Analíticas: nos permiten medir de forma agregada y anónima el uso de la web para mejorarla." ] } ] },
+      { id: "gestion", h: "Cómo gestionarlas", body: [
+        { p: "Puede permitir, bloquear o eliminar las cookies instaladas en su equipo desde la configuración de su navegador. Tenga en cuenta que desactivar las cookies técnicas puede afectar al funcionamiento del sitio." } ] } ] },
+  "aviso-legal": {
+    crumb: "Aviso legal",
+    title: ["Aviso ", "legal."],
+    lead: "Condiciones generales de uso y titularidad de este sitio web.",
+    updated: "Última actualización · Junio 2026",
+    intro: "El presente aviso legal regula el uso del sitio web de ACIP Arquitectura y Construcciones, cuya titularidad y contenidos quedan sujetos a la normativa vigente.",
+    sections: [
+      { id: "titular", h: "Titularidad", body: [
+        { p: "Este sitio web es titularidad de ACIP Arquitectura y Construcciones, con domicilio en Av. de Atenas 1, Local 167, C.C. La Tortuga, Las Rozas de Madrid, y correo de contacto info@proyectosacip.com." } ] },
+      { id: "uso", h: "Condiciones de uso", body: [
+        { p: "El acceso a este sitio implica la aceptación de las presentes condiciones. El usuario se compromete a hacer un uso adecuado de los contenidos y a no emplearlos para actividades ilícitas o lesivas de derechos de terceros." } ] },
+      { id: "propiedad", h: "Propiedad intelectual", body: [
+        { p: "Todos los contenidos del sitio —textos, imágenes, proyectos, marcas y diseño— son titularidad de ACIP o de sus legítimos propietarios y están protegidos por la normativa de propiedad intelectual e industrial. Queda prohibida su reproducción total o parcial sin autorización expresa." } ] },
+      { id: "responsabilidad", h: "Responsabilidad", body: [
+        { p: "ACIP no se hace responsable del uso indebido de los contenidos ni de los posibles daños derivados de interrupciones o errores ajenos a su control en el acceso al sitio." } ] } ] }
+};
+
+function renderLegalText(text) {
+  // permite <strong>…</strong> dentro del texto
+  const parts = String(text).split(/(<strong>.*?<\/strong>)/g);
+  return parts.map((seg, i) => {
+    const m = seg.match(/^<strong>(.*?)<\/strong>$/);
+    return m ? <strong key={i}>{m[1]}</strong> : <React.Fragment key={i}>{seg}</React.Fragment>;
+  });
+}
+
+function LegalPage({ doc, navigate }) {
+  const data = LEGAL[doc] || LEGAL.privacidad;
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
+  };
+  return (
+    <main>
+      <section className="page-head no-rule">
+        <div className="page-head-inner">
+          <div>
+            <div className="crumb"><a onClick={() => navigate("home")}>ACIP</a><span>/</span><span>{data.crumb}</span></div>
+            <h1>{data.title[0]}<span className="it">{data.title[1]}</span></h1>
+            <span className="legal-meta">{data.updated}</span>
+          </div>
+          <p className="lead">{data.lead}</p>
+        </div>
+      </section>
+      <div className="legal-wrap">
+        <nav className="legal-toc" aria-label="Índice">
+          <span className="legal-toc-label">Contenido</span>
+          <ol>
+            {data.sections.map((s) =>
+            <li key={s.id}><a onClick={() => scrollTo(s.id)}>{s.h}</a></li>
+            )}
+          </ol>
+        </nav>
+        <div className="legal-body">
+          <p className="legal-intro">{data.intro}</p>
+          {data.sections.map((s, i) =>
+          <section key={s.id} id={s.id} className="legal-section">
+            <h2><span className="legal-num">{String(i + 1).padStart(2, '0')}</span>{s.h}</h2>
+            {s.body.map((b, j) =>
+              b.list ?
+              <ul key={j}>{b.list.map((li, k) => <li key={k}>{renderLegalText(li)}</li>)}</ul> :
+              <p key={j}>{renderLegalText(b.p)}</p>
+            )}
+          </section>
+          )}
+        </div>
+      </div>
+      <CTAEmocional navigate={navigate} />
+    </main>);
+}
+
 // ============= FOOTER + IG =============
 function Footer({ navigate }) {
   const tiles = [R.ig1, R.ig2, R.ig3, R.ig4, R.ig5, R.ig6];
@@ -928,9 +1050,9 @@ function Footer({ navigate }) {
       <div className="footer-bottom">
         <span>© 2026 ACIP — Arquitectura y Construcciones</span>
         <div className="footer-legal">
-          <a>Política de privacidad</a>
-          <a>Cookies</a>
-          <a>Aviso legal</a>
+          <a onClick={() => navigate("legal", "privacidad")}>Política de privacidad</a>
+          <a onClick={() => navigate("legal", "cookies")}>Cookies</a>
+          <a onClick={() => navigate("legal", "aviso-legal")}>Aviso legal</a>
         </div>
         <span>Madrid</span>
       </div>
@@ -975,6 +1097,7 @@ function App() {
   if (route.page === "inversores") view = <InversoresPage navigate={navigate} />;else
   if (route.page === "estudio") view = <EstudioPage navigate={navigate} />;else
   if (route.page === "faqs") view = <FaqsPage navigate={navigate} />;else
+  if (route.page === "legal") view = <LegalPage doc={route.param} navigate={navigate} />;else
   view = <Home navigate={navigate} />;
 
   return (
