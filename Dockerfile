@@ -52,6 +52,29 @@ RUN apk add --no-cache \
     unzip \
     && mkdir -p /etc/supervisor/conf.d /var/log/supervisor
 
+# Chromium + Node para Browsershot (generación del CV en PDF)
+RUN apk add --no-cache \
+    nodejs \
+    npm \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont \
+    font-noto \
+    && npm install -g --prefix /usr/local --unsafe-perm puppeteer \
+    && npm cache clean --force
+
+# Normalizar la ruta de Chromium: Alpine lo llama chromium o chromium-browser
+# según la versión del paquete. El build falla si falta cualquier pieza.
+RUN ln -sf "$(command -v chromium-browser || command -v chromium)" /usr/local/bin/chrome \
+    && /usr/local/bin/chrome --version \
+    && node --version \
+    && test -d /usr/local/lib/node_modules/puppeteer
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
 # Extensiones PHP necesarias
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \

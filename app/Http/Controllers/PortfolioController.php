@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Response;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
+use Spatie\Browsershot\Browsershot;
 use Spatie\LaravelPdf\Facades\Pdf;
 
 class PortfolioController extends Controller
@@ -39,6 +40,9 @@ class PortfolioController extends Controller
 
         return Pdf::view('pdf.cv', ['lang' => $lang])
             ->format('a4')
+            ->withBrowsershot(function (Browsershot $browsershot): void {
+                $browsershot->waitUntilNetworkIdle();
+            })
             ->name('raul-sebastian-cv.pdf')
             ->download();
     }

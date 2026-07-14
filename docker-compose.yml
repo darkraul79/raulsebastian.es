@@ -19,7 +19,14 @@ services:
       CACHE_STORE: file
       SESSION_DRIVER: file
       LOG_LEVEL: ${LOG_LEVEL:-error}
-      LARAVEL_PDF_DRIVER: dompdf
+      # Generación del CV en PDF vía Chromium headless (instalado en la imagen).
+      # Rutas fijas de la imagen, no secretos: se definen aquí y no en el .env.
+      LARAVEL_PDF_DRIVER: browsershot
+      LARAVEL_PDF_CHROME_PATH: /usr/local/bin/chrome
+      LARAVEL_PDF_NODE_BINARY: /usr/bin/node
+      LARAVEL_PDF_NPM_BINARY: /usr/bin/npm
+      LARAVEL_PDF_NODE_MODULES_PATH: /usr/local/lib/node_modules
+      LARAVEL_PDF_NO_SANDBOX: "true"
       TZ: Europe/Madrid
       TRUST_PROXIES: ${TRUST_PROXIES:-*}
     volumes:
