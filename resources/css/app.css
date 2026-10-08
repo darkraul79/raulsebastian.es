@@ -731,6 +731,37 @@ section {
     color: rgba(255, 255, 255, .22);
 }
 
+.about-photo-img {
+    @apply absolute inset-0 w-full h-full object-cover select-none pointer-events-none;
+    object-position: 50% 30%;
+    filter: grayscale(1) contrast(1.25) brightness(1.12);
+    transition: filter .5s ease, transform .6s ease;
+
+    .about-photo:hover & {
+        filter: grayscale(.15) contrast(1.05) brightness(.92);
+        transform: scale(1.05);
+    }
+}
+
+.about-photo-duo {
+    @apply absolute inset-0 pointer-events-none mix-blend-multiply opacity-85 transition-opacity duration-500;
+    background: linear-gradient(150deg, var(--color-rose), var(--color-purple));
+
+    .about-photo:hover & {
+        @apply opacity-0;
+    }
+}
+
+.about-photo-fade {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(to top, rgba(7, 7, 18, .6) 0%, rgba(7, 7, 18, .12) 40%, transparent 70%);
+}
+
+.about-photo-scan {
+    @apply absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay;
+    background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, .05) 0 1px, transparent 1px 3px);
+}
+
 .ph-corner {
     @apply absolute w-12 h-12 border-solid opacity-40;
     border-color: var(--color-rose);

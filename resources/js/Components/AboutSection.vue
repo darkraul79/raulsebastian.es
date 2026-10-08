@@ -6,6 +6,10 @@
         <div class="reveal">
           <div class="about-photo">
             <span class="about-initials">{ RS }</span>
+            <img src="/images/profile-studio-600.webp" srcset="/images/profile-studio-600.webp 600w, /images/profile-studio.webp 900w" sizes="(max-width: 900px) 200px, 280px" alt="Raúl Sebastián" class="about-photo-img" width="600" height="800" loading="lazy" decoding="async">
+            <div class="about-photo-duo"></div>
+            <div class="about-photo-fade"></div>
+            <div class="about-photo-scan"></div>
             <div class="ph-corner tl"></div>
             <div class="ph-corner br"></div>
           </div>
