@@ -47,6 +47,11 @@ jobs:
             esac
           done <<< "$CHANGED"
 
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            NEEDS_REBUILD=true
+            echo "  → Rebuild forzado por lanzamiento manual"
+          fi
+
           echo "needs-rebuild=$NEEDS_REBUILD" >> "$GITHUB_OUTPUT"
           echo "Resultado: needs-rebuild=$NEEDS_REBUILD"
 
